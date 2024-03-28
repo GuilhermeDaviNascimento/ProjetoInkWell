@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Croogla 4F';
+    src: url('Croogla4F.eot');
+    src: local('Croogla 4F'), local('Croogla4F'),
+        url('Croogla4F.eot?#iefix') format('embedded-opentype'),
+        url('Croogla4F.woff2') format('woff2'),
+        url('Croogla4F.woff') format('woff'),
+        url('Croogla4F.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'Croogla 4F';
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FBF8F5;
+    margin: 0;
+}
+nav{
+    width: 96px;
+    height: 100vh;
+    background-color: #EEE5DA;
+}
+.top{
+    gap: 16px;
+    width: 100vw;
+    display: flex;
+}
+.searchBooksInput{
+    display: flex;
+    align-items: center;
+    background-color: #F0E8DE;
+    border-radius: 50px;
+    width: 629px;
+    height: 64px;
+}
+
+.InputInside{
+    border: 0;
+    outline: 0;
+    background: none;
+    width: max-content;
+}
+
+
+.bi-search{
+    margin: 20px;
+}
+
+.serachBtn{
+    border: 0;
+    width: 165px;
+    height: 64px;
+    border-radius: 50px;
+}
+
+.buyCartButton{
+    border: 0;
+    background-color: #F0E8DE;
+    border-radius: 100%;
+    width: 64px;
+    height: 64px;
+}
+
+.userpic{
+    border: 100%;
+    width: 32;
+    height: 32;
+}
