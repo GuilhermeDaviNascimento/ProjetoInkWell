@@ -65,8 +65,15 @@ nav{
     height: 64px;
 }
 
-.userpic{
-    border: 100%;
-    width: 32;
-    height: 32;
+.bookList{
+    gap: 34px;
+    display: flex;
+    flex-direction: row;
+}
+
+.book{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
