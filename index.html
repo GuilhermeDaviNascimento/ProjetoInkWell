@@ -16,28 +16,22 @@
 <body>
     <nav>
     </nav>
-    <main>
-        <div class="top">
-            <label class="searchBooksInput">
-                <svg width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                </svg>
-                <input type="text" class="InputInside" placeholder="Search for books">
+    <main class="p-5">
+        <div class="top mb-5">
+            <label class="searchBooksInput p-4">
+                <img src="imgs/lupa.svg" alt="" width="23" height="23">
+                <input type="text" class="InputInside p-3" placeholder="Search for books">
             </label>
             <label class="serachButton">
-                <button class="serachBtn">search</button>
+                <button class="serachBtn rainbow-btn">search</button>
             </label>
             <label class="buyCart">
                 <button class="buyCartButton">
-                    <svg width="28" height="28" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                        <path
-                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
-                    </svg>
+                    <img src="imgs/cart.svg" alt="" width="36" height="36">
                 </button>
             </label>
         </div>
-        <div class="bookList">
+        <div class="bookList mb-5">
             <label class="book">
                 <img src="./imgs/all.svg" alt="">
                 <label for="">All</label>
@@ -78,6 +72,239 @@
                 <img src="./imgs/crime.svg" alt="">
                 <label for="">Crime</label>
             </label>
+        </div>
+        <div class="popularBooks">
+            <div class="infotexts  mb-3">
+                <h3 class="text-color">Popular</h3>
+                <div class="buttonspopular">
+                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <div><button class="menorButton text-color"><</button></div>
+                    <div><button class="maiorButton text-color">></button></div>
+                </div>
+            </div>
+            <div class="booklist">
+                <!-- PRIMEIRO LIVRO -->
+                <div>
+                    <svg width="138" height="232" viewBox="0 0 138 232" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path
+                            d="M20.5 -8.96084e-07C9.17816 -1.39098e-06 -2.32961e-05 9.33228 -2.40077e-05 25.6125L2.95992e-05 195.551C2.93469e-05 201.322 3.14129 206 7.01623 206L41 206L41 29.478C41 13.1977 31.8218 -4.01191e-07 20.5 -8.96084e-07Z"
+                            fill="#1A7077" />
+                        <path
+                            d="M0 196.768C0 208.064 6.25172 217.221 17.1579 217.221L131 217.221C134.866 217.221 138 214.087 138 210.221V176.316L19.7474 176.316C8.8412 176.316 0 185.473 0 196.768Z"
+                            fill="#023F44" />
+                        <path
+                            d="M23.7474 186.689H137.5V208.258H23.7474C17.7915 208.258 12.9632 203.43 12.9632 197.474C12.9632 191.518 17.7915 186.689 23.7474 186.689Z"
+                            fill="url(#paint0_linear_1_67-787405)" stroke="#FFF4F3" />
+                        <path
+                            d="M97.3948 189.189C97.3948 187.698 98.6036 186.489 100.095 186.489H119.484C120.975 186.489 122.184 187.698 122.184 189.189V226.472C122.184 228.479 120.072 229.785 118.277 228.887L111.265 225.381C110.336 224.917 109.243 224.917 108.314 225.381L101.302 228.887C99.507 229.785 97.3948 228.479 97.3948 226.472V189.189Z"
+                            fill="url(#paint1_linear_1_67-131424)" stroke="#E9A351" stroke-width="0.6" />
+                        <path
+                            d="M20.9263 -1.52588e-05H131C134.866 -1.52588e-05 138 3.13399 138 6.99998V176.316H20.9263V-1.52588e-05Z"
+                            fill="url(#pattern0-894876)" />
+                        <defs>
+                            <pattern id="pattern0-894876" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                <use xlink:href="#image0_1_67"
+                                    transform="matrix(0.00396825 0 0 0.00263492 0 -0.0217143)" />
+                            </pattern>
+                            <linearGradient id="paint0_linear_1_67-787405" x1="75.2316" y1="186.189" x2="75.2316"
+                                y2="208.758" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#DFD4C3" />
+                                <stop offset="1" stop-color="#EBE6DB" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_1_67-131424" x1="109.79" y1="186.189" x2="109.79"
+                                y2="231.326" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FFC375" />
+                                <stop offset="1" stop-color="#EBAC64" />
+                            </linearGradient>
+                            <image id="image0_1_67" width="252"
+                                xlink:href="https://upload.wikimedia.org/wikipedia/pt/4/4b/Jujutsu_Kaisen_Cover.png" />
+                        </defs>
+                    </svg>
+                    <div>
+                        <h4 class="pb-1 text-color">Jujutsu Kaisen</h4>
+                        <p class="text-danger">Gege Akutami</p>
+                    </div>
+                </div>
+                <!-- FIM DO PRIMEIRO LIVRO -->
+                <!-- PRIMEIRO LIVRO -->
+                <div>
+                    <svg width="138" height="232" viewBox="0 0 138 232" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path
+                            d="M20.5 -8.96084e-07C9.17816 -1.39098e-06 -2.32961e-05 9.33228 -2.40077e-05 25.6125L2.95992e-05 195.551C2.93469e-05 201.322 3.14129 206 7.01623 206L41 206L41 29.478C41 13.1977 31.8218 -4.01191e-07 20.5 -8.96084e-07Z"
+                            fill="#1A7077" />
+                        <path
+                            d="M0 196.768C0 208.064 6.25172 217.221 17.1579 217.221L131 217.221C134.866 217.221 138 214.087 138 210.221V176.316L19.7474 176.316C8.8412 176.316 0 185.473 0 196.768Z"
+                            fill="#023F44" />
+                        <path
+                            d="M23.7474 186.689H137.5V208.258H23.7474C17.7915 208.258 12.9632 203.43 12.9632 197.474C12.9632 191.518 17.7915 186.689 23.7474 186.689Z"
+                            fill="url(#paint0_linear_1_67-787405)" stroke="#FFF4F3" />
+                        <path
+                            d="M97.3948 189.189C97.3948 187.698 98.6036 186.489 100.095 186.489H119.484C120.975 186.489 122.184 187.698 122.184 189.189V226.472C122.184 228.479 120.072 229.785 118.277 228.887L111.265 225.381C110.336 224.917 109.243 224.917 108.314 225.381L101.302 228.887C99.507 229.785 97.3948 228.479 97.3948 226.472V189.189Z"
+                            fill="url(#paint1_linear_1_67-131424)" stroke="#E9A351" stroke-width="0.6" />
+                        <path
+                            d="M20.9263 -1.52588e-05H131C134.866 -1.52588e-05 138 3.13399 138 6.99998V176.316H20.9263V-1.52588e-05Z"
+                            fill="url(#pattern0-894876)" />
+                        <defs>
+                            <pattern id="pattern0-894876" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                <use xlink:href="#image0_1_67"
+                                    transform="matrix(0.00396825 0 0 0.00263492 0 -0.0217143)" />
+                            </pattern>
+                            <linearGradient id="paint0_linear_1_67-787405" x1="75.2316" y1="186.189" x2="75.2316"
+                                y2="208.758" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#DFD4C3" />
+                                <stop offset="1" stop-color="#EBE6DB" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_1_67-131424" x1="109.79" y1="186.189" x2="109.79"
+                                y2="231.326" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FFC375" />
+                                <stop offset="1" stop-color="#EBAC64" />
+                            </linearGradient>
+                            <image id="image0_1_67" width="252"
+                                xlink:href="https://upload.wikimedia.org/wikipedia/pt/4/4b/Jujutsu_Kaisen_Cover.png" />
+                        </defs>
+                    </svg>
+                    <div>
+                        <h4 class="pb-1 text-color">Jujutsu Kaisen</h4>
+                        <p class="text-danger">Gege Akutami</p>
+                    </div>
+                </div>
+                <!-- FIM DO PRIMEIRO LIVRO -->
+                                <!-- PRIMEIRO LIVRO -->
+                                <div>
+                                    <svg width="138" height="232" viewBox="0 0 138 232" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path
+                                            d="M20.5 -8.96084e-07C9.17816 -1.39098e-06 -2.32961e-05 9.33228 -2.40077e-05 25.6125L2.95992e-05 195.551C2.93469e-05 201.322 3.14129 206 7.01623 206L41 206L41 29.478C41 13.1977 31.8218 -4.01191e-07 20.5 -8.96084e-07Z"
+                                            fill="#1A7077" />
+                                        <path
+                                            d="M0 196.768C0 208.064 6.25172 217.221 17.1579 217.221L131 217.221C134.866 217.221 138 214.087 138 210.221V176.316L19.7474 176.316C8.8412 176.316 0 185.473 0 196.768Z"
+                                            fill="#023F44" />
+                                        <path
+                                            d="M23.7474 186.689H137.5V208.258H23.7474C17.7915 208.258 12.9632 203.43 12.9632 197.474C12.9632 191.518 17.7915 186.689 23.7474 186.689Z"
+                                            fill="url(#paint0_linear_1_67-787405)" stroke="#FFF4F3" />
+                                        <path
+                                            d="M97.3948 189.189C97.3948 187.698 98.6036 186.489 100.095 186.489H119.484C120.975 186.489 122.184 187.698 122.184 189.189V226.472C122.184 228.479 120.072 229.785 118.277 228.887L111.265 225.381C110.336 224.917 109.243 224.917 108.314 225.381L101.302 228.887C99.507 229.785 97.3948 228.479 97.3948 226.472V189.189Z"
+                                            fill="url(#paint1_linear_1_67-131424)" stroke="#E9A351" stroke-width="0.6" />
+                                        <path
+                                            d="M20.9263 -1.52588e-05H131C134.866 -1.52588e-05 138 3.13399 138 6.99998V176.316H20.9263V-1.52588e-05Z"
+                                            fill="url(#pattern0-894876)" />
+                                        <defs>
+                                            <pattern id="pattern0-894876" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                                <use xlink:href="#image0_1_67"
+                                                    transform="matrix(0.00396825 0 0 0.00263492 0 -0.0217143)" />
+                                            </pattern>
+                                            <linearGradient id="paint0_linear_1_67-787405" x1="75.2316" y1="186.189" x2="75.2316"
+                                                y2="208.758" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#DFD4C3" />
+                                                <stop offset="1" stop-color="#EBE6DB" />
+                                            </linearGradient>
+                                            <linearGradient id="paint1_linear_1_67-131424" x1="109.79" y1="186.189" x2="109.79"
+                                                y2="231.326" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#FFC375" />
+                                                <stop offset="1" stop-color="#EBAC64" />
+                                            </linearGradient>
+                                            <image id="image0_1_67" width="252"
+                                                xlink:href="https://upload.wikimedia.org/wikipedia/pt/4/4b/Jujutsu_Kaisen_Cover.png" />
+                                        </defs>
+                                    </svg>
+                                    <div>
+                                        <h4 class="pb-1 text-color">Jujutsu Kaisen</h4>
+                                        <p class="text-danger">Gege Akutami</p>
+                                    </div>
+                                </div>
+                                <!-- FIM DO PRIMEIRO LIVRO -->
+                                                <!-- PRIMEIRO LIVRO -->
+                <div>
+                    <svg width="138" height="232" viewBox="0 0 138 232" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path
+                            d="M20.5 -8.96084e-07C9.17816 -1.39098e-06 -2.32961e-05 9.33228 -2.40077e-05 25.6125L2.95992e-05 195.551C2.93469e-05 201.322 3.14129 206 7.01623 206L41 206L41 29.478C41 13.1977 31.8218 -4.01191e-07 20.5 -8.96084e-07Z"
+                            fill="#1A7077" />
+                        <path
+                            d="M0 196.768C0 208.064 6.25172 217.221 17.1579 217.221L131 217.221C134.866 217.221 138 214.087 138 210.221V176.316L19.7474 176.316C8.8412 176.316 0 185.473 0 196.768Z"
+                            fill="#023F44" />
+                        <path
+                            d="M23.7474 186.689H137.5V208.258H23.7474C17.7915 208.258 12.9632 203.43 12.9632 197.474C12.9632 191.518 17.7915 186.689 23.7474 186.689Z"
+                            fill="url(#paint0_linear_1_67-787405)" stroke="#FFF4F3" />
+                        <path
+                            d="M97.3948 189.189C97.3948 187.698 98.6036 186.489 100.095 186.489H119.484C120.975 186.489 122.184 187.698 122.184 189.189V226.472C122.184 228.479 120.072 229.785 118.277 228.887L111.265 225.381C110.336 224.917 109.243 224.917 108.314 225.381L101.302 228.887C99.507 229.785 97.3948 228.479 97.3948 226.472V189.189Z"
+                            fill="url(#paint1_linear_1_67-131424)" stroke="#E9A351" stroke-width="0.6" />
+                        <path
+                            d="M20.9263 -1.52588e-05H131C134.866 -1.52588e-05 138 3.13399 138 6.99998V176.316H20.9263V-1.52588e-05Z"
+                            fill="url(#pattern0-894876)" />
+                        <defs>
+                            <pattern id="pattern0-894876" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                <use xlink:href="#image0_1_67"
+                                    transform="matrix(0.00396825 0 0 0.00263492 0 -0.0217143)" />
+                            </pattern>
+                            <linearGradient id="paint0_linear_1_67-787405" x1="75.2316" y1="186.189" x2="75.2316"
+                                y2="208.758" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#DFD4C3" />
+                                <stop offset="1" stop-color="#EBE6DB" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_1_67-131424" x1="109.79" y1="186.189" x2="109.79"
+                                y2="231.326" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FFC375" />
+                                <stop offset="1" stop-color="#EBAC64" />
+                            </linearGradient>
+                            <image id="image0_1_67" width="252"
+                                xlink:href="https://upload.wikimedia.org/wikipedia/pt/4/4b/Jujutsu_Kaisen_Cover.png" />
+                        </defs>
+                    </svg>
+                    <div>
+                        <h4 class="pb-1 text-color">Jujutsu Kaisen</h4>
+                        <p class="text-danger">Gege Akutami</p>
+                    </div>
+                </div>
+                <!-- FIM DO PRIMEIRO LIVRO -->
+                                <!-- PRIMEIRO LIVRO -->
+                                <div>
+                                    <svg width="138" height="232" viewBox="0 0 138 232" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path
+                                            d="M20.5 -8.96084e-07C9.17816 -1.39098e-06 -2.32961e-05 9.33228 -2.40077e-05 25.6125L2.95992e-05 195.551C2.93469e-05 201.322 3.14129 206 7.01623 206L41 206L41 29.478C41 13.1977 31.8218 -4.01191e-07 20.5 -8.96084e-07Z"
+                                            fill="#1A7077" />
+                                        <path
+                                            d="M0 196.768C0 208.064 6.25172 217.221 17.1579 217.221L131 217.221C134.866 217.221 138 214.087 138 210.221V176.316L19.7474 176.316C8.8412 176.316 0 185.473 0 196.768Z"
+                                            fill="#023F44" />
+                                        <path
+                                            d="M23.7474 186.689H137.5V208.258H23.7474C17.7915 208.258 12.9632 203.43 12.9632 197.474C12.9632 191.518 17.7915 186.689 23.7474 186.689Z"
+                                            fill="url(#paint0_linear_1_67-787405)" stroke="#FFF4F3" />
+                                        <path
+                                            d="M97.3948 189.189C97.3948 187.698 98.6036 186.489 100.095 186.489H119.484C120.975 186.489 122.184 187.698 122.184 189.189V226.472C122.184 228.479 120.072 229.785 118.277 228.887L111.265 225.381C110.336 224.917 109.243 224.917 108.314 225.381L101.302 228.887C99.507 229.785 97.3948 228.479 97.3948 226.472V189.189Z"
+                                            fill="url(#paint1_linear_1_67-131424)" stroke="#E9A351" stroke-width="0.6" />
+                                        <path
+                                            d="M20.9263 -1.52588e-05H131C134.866 -1.52588e-05 138 3.13399 138 6.99998V176.316H20.9263V-1.52588e-05Z"
+                                            fill="url(#pattern0-894876)" />
+                                        <defs>
+                                            <pattern id="pattern0-894876" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                                <use xlink:href="#image0_1_67"
+                                                    transform="matrix(0.00396825 0 0 0.00263492 0 -0.0217143)" />
+                                            </pattern>
+                                            <linearGradient id="paint0_linear_1_67-787405" x1="75.2316" y1="186.189" x2="75.2316"
+                                                y2="208.758" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#DFD4C3" />
+                                                <stop offset="1" stop-color="#EBE6DB" />
+                                            </linearGradient>
+                                            <linearGradient id="paint1_linear_1_67-131424" x1="109.79" y1="186.189" x2="109.79"
+                                                y2="231.326" gradientUnits="userSpaceOnUse">
+                                                <stop stop-color="#FFC375" />
+                                                <stop offset="1" stop-color="#EBAC64" />
+                                            </linearGradient>
+                                            <image id="image0_1_67" width="252"
+                                                xlink:href="https://upload.wikimedia.org/wikipedia/pt/4/4b/Jujutsu_Kaisen_Cover.png" />
+                                        </defs>
+                                    </svg>
+                                    <div>
+                                        <h4 class="pb-1 text-color">Jujutsu Kaisen</h4>
+                                        <p class="text-danger">Gege Akutami</p>
+                                    </div>
+                                </div>
+                                <!-- FIM DO PRIMEIRO LIVRO -->
+            </div>
+        </div>
         </div>
     </main>
 </body>

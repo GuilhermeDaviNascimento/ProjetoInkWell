@@ -20,12 +20,11 @@ body{
     margin: 0;
 }
 nav{
-    width: 96px;
     height: 100vh;
     background-color: #EEE5DA;
 }
 .top{
-    gap: 16px;
+    gap: 40px;
     width: 100vw;
     display: flex;
 }
@@ -45,12 +44,11 @@ nav{
     width: max-content;
 }
 
-
 .bi-search{
     margin: 20px;
 }
 
-.serachBtn{
+.serachBtn, .viewAllButton, .menorButton, .maiorButton{
     border: 0;
     width: 165px;
     height: 64px;
@@ -77,3 +75,85 @@ nav{
     justify-content: center;
     align-items: center;
 }
+.book:hover{
+    cursor: pointer;
+}
+
+.text-color, label{
+    color: #72564D;
+}
+
+h3, h4, p, div, .top{
+    width: max-content;
+}
+
+.viewAllButton{
+    background-color: #F0E8DE;
+    width: 104px;
+    height: 48px
+}
+.menorButton{
+    background-color: #F0E8DE;
+    height: 48px;
+    width: 48px;
+}
+
+.maiorButton{
+    background-color: #F0E8DE;
+    height: 48px;
+    width: 48px;
+}
+
+.infotexts{
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonspopular{
+    gap: 10px;
+    margin-left: 650px;
+    display: flex;
+}
+
+.booklist{
+    gap: 43px;
+    display: flex;
+}
+
+.rainbow-btn {
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    padding: 20px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: .5s;
+    background: linear-gradient(90deg, #806494, #9AAF80, #E6C370, #E66060, #806494);
+    background-size: 400%;
+    animation: rainbow 8s linear infinite;
+ }
+ @keyframes rainbow {
+    0% { background-position: 0%; }
+    100% { background-position: 400%; }
+ }
+ .rainbow-btn:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #806494, #9AAF80, #E6C370, #E66060, #806494);
+    background-size: 400%;
+    border-radius: 50px;
+    opacity: .5;
+    transition: 0.5s;
+    animation: rainbow 8s linear infinite;
+    filter: blur(5px);
+ }
+ .rainbow-btn:hover:before {
+    filter: blur(20px);
+    opacity: 1;
+ }
+ 
