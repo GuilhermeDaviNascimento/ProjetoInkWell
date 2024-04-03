@@ -8,6 +8,7 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 const userController = require(`./controller.js`);
 
+app.get('/register', (req, res) => res.render(`register`))
 app.get(`/`, userController.getAllBooksOnLoad)
 app.get('/search/:title', userController.searchInput)
 app.get(`/category/:category`, userController.searchCategory)

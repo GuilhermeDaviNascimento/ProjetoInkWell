@@ -1,11 +1,7 @@
 @font-face {
     font-family: 'Croogla 4F';
     src: url('Croogla4F.eot');
-    src: local('Croogla 4F'), local('Croogla4F'),
-        url('Croogla4F.eot?#iefix') format('embedded-opentype'),
-        url('Croogla4F.woff2') format('woff2'),
-        url('Croogla4F.woff') format('woff'),
-        url('Croogla4F.ttf') format('truetype');
+    src: url(../font/Croogla4F.ttf);
     font-weight: normal;
     font-style: normal;
 }
@@ -181,4 +177,10 @@ h3, h4, p, div, .top{
 
  a{
     text-decoration: none;
+ }
+
+ .inpRegisterLogin, .inpRegisterLogin::before {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
  }
