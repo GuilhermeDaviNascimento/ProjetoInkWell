@@ -1,0 +1,23 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.cape{
+    margin-left: 7vw;
+    height: 70vh;
+}
+.leftdiv{
+    margin-left: 7vw;
+    display: flex;
+    flex-direction: column;
+}
+.borrowButton{
+    padding: 10px 50px;
+    border-radius: 50px;
+    text-align: center;
+    width: max-content;
+    color: #7C635A;
+    background-color: #EEE5DA;
+}
