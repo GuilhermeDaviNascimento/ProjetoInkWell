@@ -38,8 +38,7 @@
     </nav>
     <main>
         <div>
-            <img src="<%= book.cape %>" alt="cape"
-                class="cape">
+            <img src="<%= book.cape %>" alt="cape" class="cape">
         </div>
         <div class="leftdiv">
             <label for="titulo" style="font-size: 48px;">
@@ -51,17 +50,21 @@
             <label for="descrição" style="width: 800px; font-size: 24px; margin-bottom: 4vh;">
                 <%= book.description %>
             </label>
-            <% if(book.available === 0){ %>
-                <a href="../borrow/<%= book.id %>" class="borrowButton">
-                    Reservar <br>
-                    Até 18-05-2024
+            <% if(book.reserve===1){ %>
+                <a href=".." class="borrowButton">
+                    Indisponivel
                 </a>
-                <% } else{ %>
-                    <a href="../borrow/<%= book.id %>" class="borrowButton">
-                        Alugar <br>
+                <% } else if (book.available===0){ %>
+                    <a href="../reserve/<%= book.id %>" class="borrowButton">
+                        Reservar <br>
                         Até 18-05-2024
                     </a>
-                  <% } %>
+                    <% } else{ %>
+                        <a href="../borrow/<%= book.id %>" class="borrowButton">
+                            Alugar <br>
+                            Até 18-05-2024
+                        </a>
+                        <% } %>
         </div>
     </main>
 </body>

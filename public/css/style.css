@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-body{
+body {
     font-family: 'Croogla 4F';
     display: flex;
     flex-direction: row;
@@ -15,16 +15,20 @@ body{
     background-color: #FBF8F5;
     margin: 0;
 }
-nav{
+
+nav {
     height: 100vh;
     background-color: #EEE5DA;
 }
-.top{
+
+.top {
     gap: 40px;
-    width: 100vw;
+    width: 100%;
     display: flex;
+    justify-content: space-between;
 }
-.searchBooksInput{
+
+.searchBooksInput {
     display: flex;
     align-items: center;
     background-color: #F0E8DE;
@@ -33,25 +37,28 @@ nav{
     height: 64px;
 }
 
-.InputInside{
+.InputInside {
     border: 0;
     outline: 0;
     background: none;
     width: max-content;
 }
 
-.bi-search{
+.bi-search {
     margin: 20px;
 }
 
-.serachBtn, .viewAllButton, .menorButton, .maiorButton{
+.serachBtn,
+.viewAllButton,
+.menorButton,
+.maiorButton {
     border: 0;
     width: 165px;
     height: 64px;
     border-radius: 50px;
 }
 
-.buyCartButton{
+.buyCartButton {
     border: 0;
     background-color: #F0E8DE;
     border-radius: 100%;
@@ -59,59 +66,71 @@ nav{
     height: 64px;
 }
 
-.bookList{
+.bookList {
     gap: 34px;
     display: flex;
     flex-direction: row;
 }
 
-.book{
+.book {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.book:hover{
+
+.book:hover {
     cursor: pointer;
 }
 
-.text-color, label{
+.text-color,
+label {
     color: #72564D;
 }
 
-h3, h4, p, div, .top{
+h3,
+h4,
+p,
+div,
+p {
     width: max-content;
 }
 
-.viewAllButton{
+.viewAllButton {
     background-color: #F0E8DE;
     width: 104px;
     height: 48px
 }
-.menorButton{
+
+.menorButton {
     background-color: #F0E8DE;
     height: 48px;
     width: 48px;
 }
 
-.maiorButton{
+.maiorButton {
     background-color: #F0E8DE;
     height: 48px;
     width: 48px;
 }
 
-.infotexts{
+.infotexts {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
-.buttonspopular{
+.popularBooks {
+    width: 100%;
+}
+
+.buttonspopular {
     gap: 10px;
     margin-left: 650px;
     display: flex;
 }
 
-.booklist{
+.booklist {
     gap: 43px;
     display: flex;
 }
@@ -127,12 +146,19 @@ h3, h4, p, div, .top{
     background: linear-gradient(90deg, #806494, #9AAF80, #E6C370, #E66060, #806494);
     background-size: 400%;
     animation: rainbow 8s linear infinite;
- }
- @keyframes rainbow {
-    0% { background-position: 0%; }
-    100% { background-position: 400%; }
- }
- .rainbow-btn:before {
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 400%;
+    }
+}
+
+.rainbow-btn:before {
     content: '';
     position: absolute;
     top: -5px;
@@ -147,13 +173,14 @@ h3, h4, p, div, .top{
     transition: 0.5s;
     animation: rainbow 8s linear infinite;
     filter: blur(5px);
- }
- .rainbow-btn:hover:before {
+}
+
+.rainbow-btn:hover:before {
     filter: blur(20px);
     opacity: 1;
- }
- 
- .navBarBalls{
+}
+
+.navBarBalls {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,26 +188,72 @@ h3, h4, p, div, .top{
     height: 64px;
     background-color: #FAF2E9;
     border-radius: 100%;
- }
+}
 
- .midleBalls{
+.midleBalls {
     display: flex;
     flex-direction: column;
     gap: 16px;
- }
- nav{
+}
+
+nav {
     display: flex;
+    height: 100vh;
     flex-direction: column;
     justify-content: space-between;
     padding: 32px 16px;
- }
+}
 
- a{
+a {
     text-decoration: none;
- }
+}
 
- .inpRegisterLogin, .inpRegisterLogin::before {
+.inpRegisterLogin,
+.inpRegisterLogin::before {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
- }
+}
+
+.inputwithbuttonserach {
+    gap: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.booksInCategory {
+    width: 80vw;
+    gap: 32px;
+    display: flex;
+}
+
+.booklistcategoryhor {
+    width: 500px;
+}
+
+.bookstitles {
+    font-size: 17px;
+    width: 150px;
+}
+
+.outer {
+    padding: 10px;
+    overflow-y: hidden;
+    height: 90%;
+}
+
+.flex-container {
+    overflow-x: auto;
+    height: calc(100% + 17px);
+    gap: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.card {
+    flex: 1 0 100px;
+    height: 150px;
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid;
+}

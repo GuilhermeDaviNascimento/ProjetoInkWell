@@ -4,7 +4,9 @@ const validator = require('./registerValidaditons.js')
 const getAllBooksOnLoad = (req, res) => {
     if (req.session.id_user) {
         userModels.getAllBooks((err, results) => {
-            res.render('index', { lista: results });
+            userModels.getBorrowBooksByID(req.session.id_user, (err, resultsBorrow) => {
+                res.render('index', { lista: results, borrow: resultsBorrow });
+            })
         })
     } else {
         res.redirect('./login')
@@ -90,7 +92,23 @@ const borrow = (req, res) => {
         res.redirect('../login')
     }
 }
-
+const reserve = (req, res) => {
+    const { book_id } = req.params
+    if (req.session.id_user) {
+        userModels.isAvailableReserve(book_id, (err, result) => {
+            userModels.getDateBorrowByID(book_id, (err, book) => {
+                if (result === true) {
+                    userModels.reserveBook(req.session.id_user, book_id, book.Data_Devolucao)
+                } else {
+                    console.log(`livro já reservado`)
+                    return
+                }
+            })
+        })
+    } else {
+        res.redirect('../login')
+    }
+}
 module.exports = {
     getAllBooksOnLoad,
     searchCategory,
@@ -98,5 +116,6 @@ module.exports = {
     RegisterUser,
     loadBookPage,
     login,
-    borrow
+    borrow,
+    reserve
 }
