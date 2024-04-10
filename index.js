@@ -25,6 +25,8 @@ app.post('/createuser', userController.RegisterUser)
 app.get(`/`, userController.getAllBooksOnLoad)
 app.get('/search/:title', userController.searchInput)
 app.get(`/category/:category`, userController.searchCategory)
+app.get('/logout', userController.logoutSession)
+app.get('/adminpage', userController.loadAdminpage)
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

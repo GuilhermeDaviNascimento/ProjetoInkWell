@@ -70,10 +70,10 @@
                                             <%= livro.name %>
                                         </p>
                                         <p>
-                                            <%= livro.Data_Emprestimo %>
+                                            <%= livro.Data_Emprestimo.toLocaleDateString('pt-BR') %>
                                         </p>
                                         <p>
-                                            <%= livro.Data_Devolucao %>
+                                            <%= livro.Data_Devolucao.toLocaleDateString('pt-BR') %>
                                         </p>
                                     </div>
                                     <% }) %>

@@ -1,91 +1,98 @@
 @font-face {
-    font-family: 'Croogla 4F';
-    src: url('Croogla4F.eot');
-    src: url(../font/Croogla4F.ttf);
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Croogla 4F";
+  src: url("Croogla4F.eot");
+  src: url(../font/Croogla4F.ttf);
+  font-weight: normal;
+  font-style: normal;
 }
-
+html {
+  height: max-content;
+}
 body {
-    font-family: 'Croogla 4F';
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 100vh;
-    background-color: #FBF8F5;
-    margin: 0;
+  font-family: "Croogla 4F";
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100%;
+  height: 100%;
+  background-color: #fbf8f5;
 }
 
 nav {
-    height: 100vh;
-    background-color: #EEE5DA;
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #eee5da;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 16px;
 }
-
 .top {
-    gap: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .searchBooksInput {
-    display: flex;
-    align-items: center;
-    background-color: #F0E8DE;
-    border-radius: 50px;
-    width: 629px;
-    height: 64px;
+  display: flex;
+  align-items: center;
+  background-color: #f0e8de;
+  border-radius: 50px;
+  width: 629px;
+  height: 64px;
 }
 
 .InputInside {
-    border: 0;
-    outline: 0;
-    background: none;
-    width: max-content;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: max-content;
 }
 
 .bi-search {
-    margin: 20px;
+  margin: 20px;
 }
 
 .serachBtn,
 .viewAllButton,
 .menorButton,
 .maiorButton {
-    border: 0;
-    width: 165px;
-    height: 64px;
-    border-radius: 50px;
+  border: 0;
+  width: 165px;
+  height: 64px;
+  border-radius: 50px;
 }
 
 .buyCartButton {
-    border: 0;
-    background-color: #F0E8DE;
-    border-radius: 100%;
-    width: 64px;
-    height: 64px;
+  border: 0;
+  background-color: #f0e8de;
+  border-radius: 100%;
+  width: 64px;
+  height: 64px;
 }
 
 .bookList {
-    gap: 34px;
-    display: flex;
-    flex-direction: row;
+  gap: 34px;
+  display: flex;
+  flex-direction: row;
 }
 
 .book {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .book:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .text-color,
 label {
-    color: #72564D;
+  color: #72564d;
 }
 
 h3,
@@ -93,167 +100,173 @@ h4,
 p,
 div,
 p {
-    width: max-content;
+  width: max-content;
 }
 
 .viewAllButton {
-    background-color: #F0E8DE;
-    width: 104px;
-    height: 48px
+  background-color: #f0e8de;
+  width: 104px;
+  height: 48px;
 }
 
 .menorButton {
-    background-color: #F0E8DE;
-    height: 48px;
-    width: 48px;
+  background-color: #f0e8de;
+  height: 48px;
+  width: 48px;
 }
 
 .maiorButton {
-    background-color: #F0E8DE;
-    height: 48px;
-    width: 48px;
+  background-color: #f0e8de;
+  height: 48px;
+  width: 48px;
 }
 
 .infotexts {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .popularBooks {
-    width: 100%;
+  width: 100%;
 }
 
 .buttonspopular {
-    gap: 10px;
-    margin-left: 650px;
-    display: flex;
+  gap: 10px;
+  margin-left: 650px;
+  display: flex;
 }
 
 .booklist {
-    gap: 43px;
-    display: flex;
+  gap: 43px;
+  display: flex;
 }
 
 .rainbow-btn {
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    padding: 20px 30px;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: .5s;
-    background: linear-gradient(90deg, #806494, #9AAF80, #E6C370, #E66060, #806494);
-    background-size: 400%;
-    animation: rainbow 8s linear infinite;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  padding: 20px 30px;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: 0.5s;
+  background: linear-gradient(
+    90deg,
+    #806494,
+    #9aaf80,
+    #e6c370,
+    #e66060,
+    #806494
+  );
+  background-size: 400%;
+  animation: rainbow 8s linear infinite;
 }
 
 @keyframes rainbow {
-    0% {
-        background-position: 0%;
-    }
+  0% {
+    background-position: 0%;
+  }
 
-    100% {
-        background-position: 400%;
-    }
+  100% {
+    background-position: 400%;
+  }
 }
 
 .rainbow-btn:before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    z-index: -1;
-    background: linear-gradient(90deg, #806494, #9AAF80, #E6C370, #E66060, #806494);
-    background-size: 400%;
-    border-radius: 50px;
-    opacity: .5;
-    transition: 0.5s;
-    animation: rainbow 8s linear infinite;
-    filter: blur(5px);
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    #806494,
+    #9aaf80,
+    #e6c370,
+    #e66060,
+    #806494
+  );
+  background-size: 400%;
+  border-radius: 50px;
+  opacity: 0.5;
+  transition: 0.5s;
+  animation: rainbow 8s linear infinite;
+  filter: blur(5px);
 }
 
 .rainbow-btn:hover:before {
-    filter: blur(20px);
-    opacity: 1;
+  filter: blur(20px);
+  opacity: 1;
 }
 
 .navBarBalls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 64px;
-    height: 64px;
-    background-color: #FAF2E9;
-    border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  background-color: #faf2e9;
+  border-radius: 100%;
 }
 
 .midleBalls {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-nav {
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .inpRegisterLogin,
 .inpRegisterLogin::before {
-    box-shadow: 0 0 0 0;
-    border: 0 none;
-    outline: 0;
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
 }
 
 .inputwithbuttonserach {
-    gap: 40px;
-    display: flex;
-    flex-direction: row;
+  gap: 40px;
+  display: flex;
+  flex-direction: row;
 }
 
 .booksInCategory {
-    width: 80vw;
-    gap: 32px;
-    display: flex;
+  width: 80vw;
+  gap: 32px;
+  display: flex;
 }
 
 .booklistcategoryhor {
-    width: 500px;
+  width: 500px;
 }
 
 .bookstitles {
-    font-size: 17px;
-    width: 150px;
+  font-size: 17px;
+  width: 150px;
 }
 
 .outer {
-    padding: 10px;
-    overflow-y: hidden;
-    height: 90%;
+  padding: 10px;
+  overflow-y: hidden;
+  height: 90%;
 }
 
 .flex-container {
-    overflow-x: auto;
-    height: calc(100% + 17px);
-    gap: 25px;
-    display: flex;
-    flex-wrap: nowrap;
+  overflow-x: auto;
+  height: calc(100% + 17px);
+  gap: 25px;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .card {
-    flex: 1 0 100px;
-    height: 150px;
-    display: inline-block;
-    margin: 5px;
-    border: 1px solid;
+  flex: 1 0 100px;
+  height: 150px;
+  display: inline-block;
+  margin: 5px;
+  border: 1px solid;
 }

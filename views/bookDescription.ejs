@@ -52,17 +52,21 @@
             </label>
             <% if(book.reserve===1){ %>
                 <a href=".." class="borrowButton">
-                    Indisponivel
+                    indisponível
                 </a>
-                <% } else if (book.available===0){ %>
+                <% } else if (borrow.full===true){ %>
+                    <a href="../" class="borrowButton">
+                        Gentilmente informamos que o limite de empréstimos e reservas de livros foi alcançado.
+                    </a>
+                                      <% } else if (book.available===0){ %>
                     <a href="../reserve/<%= book.id %>" class="borrowButton">
                         Reservar <br>
-                        Até 18-05-2024
+                        Disponível em <%= borrow.Data_Devolucao.toLocaleDateString('pt-BR') %>
                     </a>
                     <% } else{ %>
                         <a href="../borrow/<%= book.id %>" class="borrowButton">
                             Alugar <br>
-                            Até 18-05-2024
+                            Até <%= new Date(new Date().setMonth(new Date().getMonth() + 1)).toLocaleDateString('pt-BR')%>
                         </a>
                         <% } %>
         </div>
