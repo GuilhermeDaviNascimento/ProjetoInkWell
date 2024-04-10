@@ -196,6 +196,11 @@ function unavailableBookBorrow(BookID) {
   });
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 function getBorrowBooksByID(id, callback) {
   const query =
     "SELECT books.name, borrow.Data_Emprestimo, borrow.Data_Devolucao FROM borrow, books WHERE borrow.ID_Usuario = ? AND borrow.ID_Livro = books.id";
