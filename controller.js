@@ -1,13 +1,18 @@
 const userModels = require(`./models.js`);
+const userModelsBorrow = require(`./modelsBorrow.js`);
+const userModelsReserve = require(`./modelsReserve.js`);
 const validator = require("./registerValidaditons.js");
 
 const getAllBooksOnLoad = (req, res) => {
   if (req.session.id_user) {
     userModels.getAllBooks((err, results) => {
-      userModels.getBorrowBooksByID(
+      userModelsBorrow.getBorrowBooksByID(
         req.session.id_user,
         (err, resultsBorrow) => {
-          res.render("index", { lista: results, borrow: resultsBorrow });
+          userModelsReserve.getAllBorrowBooksByID(req.session.id_user, (err, resultReservers) => {
+            console.log(resultReservers)
+            res.render("index", { lista: results, borrow: resultsBorrow, reserves: resultReservers});
+          })
         }
       );
     });
@@ -18,17 +23,18 @@ const getAllBooksOnLoad = (req, res) => {
 
 const loadBookPage = (req, res) => {
   const { book_id } = req.params;
-  const isfullborrow = {
+  let isfullborrow = {
     full: true
   }
   userModels.getBookByID(book_id, (err, result) => {
-    userModels.getBorrowDatByID(book_id, (err, book) => {
-      userModels.getBorrowBooksByID(
-        req.session.id_user, (err, borrows) =>{ 
-          if (borrows.length >= 3){
-              res.render(`bookDescription`, { book: result, borrow: isfullborrow });     
-            } else {
-              res.render(`bookDescription`, { book: result, borrow: book });     
+    userModelsBorrow.getBorrowDatByID(book_id, (err, book) => {
+      userModelsBorrow.getBorrowBooksByID(
+        req.session.id_user, (err, borrows) => {
+          if (borrows.length >= 3) {
+            res.render(`bookDescription`, { book: result, borrow: book, isfullborrows: isfullborrow });
+          } else {
+            isfullborrow.full = false
+            res.render(`bookDescription`, { book: result, borrow: book, isfullborrows: isfullborrow });
           }
         })
     })
@@ -99,9 +105,9 @@ const login = (req, res) => {
 const borrow = (req, res) => {
   const { book_id } = req.params;
   if (req.session.id_user) {
-    userModels.isAvailable(book_id, (err, result) => {
+    userModelsBorrow.isAvailable(book_id, (err, result) => {
       if (result === true) {
-        userModels.borrowBook(req.session.id_user, book_id);
+        userModelsBorrow.borrowBook(req.session.id_user, book_id);
         res.redirect("../");
       } else {
         console.log(`livro ocupado`);
@@ -115,10 +121,10 @@ const borrow = (req, res) => {
 const reserve = (req, res) => {
   const { book_id } = req.params;
   if (req.session.id_user) {
-    userModels.isAvailableReserve(book_id, (err, result) => {
-      userModels.getDateBorrowByID(book_id, (err, book) => {
+    userModelsReserve.isAvailableReserve(book_id, (err, result) => {
+      userModelsBorrow.getDateBorrowByID(book_id, (err, book) => {
         if (result === true) {
-          userModels.reserveBook(
+          userModelsReserve.reserveBook(
             req.session.id_user,
             book_id,
             book.Data_Devolucao
@@ -136,12 +142,13 @@ const reserve = (req, res) => {
 };
 
 const loadAdminpage = (req, res) => {
-  userModels.getAllBorrowBooks((err, allbooksborrow) => {
+  userModelsBorrow.getAllBorrowBooks((err, allbooksborrow) => {
     userModels.getAllUsers((err, users) => {
-      res.render('adminpage', { borrowBooks: allbooksborrow, users: users})
+      res.render('adminpage', { borrowBooks: allbooksborrow, users: users })
     })
   })
 }
+
 const logoutSession = (req, res) => {
   req.session.destroy(function (err) {
     res.clearCookie("user_id");
@@ -159,5 +166,5 @@ module.exports = {
   borrow,
   reserve,
   logoutSession,
-  loadAdminpage
+  loadAdminpage,
 };

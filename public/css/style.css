@@ -270,3 +270,11 @@ a {
   margin: 5px;
   border: 1px solid;
 }
+.btn-primary{
+ outline: none;
+ border: none;
+}
+.btn-primary:hover, .btn-primary::after{
+  background-color: #72564d;
+  outline: none;
+}

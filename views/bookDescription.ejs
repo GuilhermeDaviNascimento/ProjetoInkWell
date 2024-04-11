@@ -50,25 +50,26 @@
             <label for="descrição" style="width: 800px; font-size: 24px; margin-bottom: 4vh;">
                 <%= book.description %>
             </label>
-            <% if(book.reserve===1){ %>
-                <a href=".." class="borrowButton">
-                    indisponível
+            <% if (book.reserve===1){ %>
+                <a href="../" class="borrowButton">
+                Livro Indisponivel
                 </a>
-                <% } else if (borrow.full===true){ %>
+                <% } else if (isfullborrows.full===true){ %>
                     <a href="../" class="borrowButton">
                         Gentilmente informamos que o limite de empréstimos e reservas de livros foi alcançado.
                     </a>
-                                      <% } else if (book.available===0){ %>
-                    <a href="../reserve/<%= book.id %>" class="borrowButton">
-                        Reservar <br>
-                        Disponível em <%= borrow.Data_Devolucao.toLocaleDateString('pt-BR') %>
-                    </a>
-                    <% } else{ %>
-                        <a href="../borrow/<%= book.id %>" class="borrowButton">
-                            Alugar <br>
-                            Até <%= new Date(new Date().setMonth(new Date().getMonth() + 1)).toLocaleDateString('pt-BR')%>
+                    <% } else if (book.available===0){ %>
+                        <a href="../reserve/<%= book.id %>" class="borrowButton">
+                            Reservar <br>
+                            Disponível em <%= borrow.Data_Devolucao.toLocaleDateString('pt-BR') %>
                         </a>
-                        <% } %>
+                        <% } else{ %>
+                            <a href="../borrow/<%= book.id %>" class="borrowButton">
+                                Alugar <br>
+                                Até <%= new Date(new Date().setMonth(new Date().getMonth() +
+                                    1)).toLocaleDateString('pt-BR')%>
+                            </a>
+                            <% } %>
         </div>
     </main>
 </body>
