@@ -21,3 +21,9 @@ main{
     color: #7C635A;
     background-color: #EEE5DA;
 }
+
+.divballs{
+    display: flex;
+    margin-top: 16px;
+    gap: 16px;
+}

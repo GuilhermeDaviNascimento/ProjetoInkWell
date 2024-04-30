@@ -52,7 +52,7 @@
             </label>
             <% if (book.reserve===1){ %>
                 <a href="../" class="borrowButton">
-                Livro Indisponivel
+                    Livro Indisponivel
                 </a>
                 <% } else if (isfullborrows.full===true){ %>
                     <a href="../" class="borrowButton">
@@ -70,6 +70,23 @@
                                     1)).toLocaleDateString('pt-BR')%>
                             </a>
                             <% } %>
+                            <div class="divballs">
+                                <a href="./">
+                                    <div class="navBarBalls">
+                                        <img src="../imgs/heart.svg" alt="" width="24px" height="24px">
+                                    </div>
+                                </a>
+                                <a href="./">
+                                    <div class="navBarBalls">
+                                        <img src="../imgs/play.svg" alt="" width="24px" height="24px">
+                                    </div>
+                                </a>
+                                <a href="./">
+                                    <div class="navBarBalls">
+                                        <img src="../imgs/ticket.svg" alt="" width="24px" height="24px">
+                                    </div>
+                                </a>
+                            </div>
         </div>
     </main>
 </body>

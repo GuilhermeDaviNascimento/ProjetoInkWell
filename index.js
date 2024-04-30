@@ -27,6 +27,9 @@ app.get('/search/:title', userController.searchInput)
 app.get(`/category/:category`, userController.searchCategory)
 app.get('/logout', userController.logoutSession)
 app.get('/adminpage', userController.loadAdminpage)
+app.get('/favorite', userController.GetAllFavoriteBooks)
+app.get('/read', userController.GetAllReadBooks)
+app.get('/reading', userController.GetAllReadingBooks)
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

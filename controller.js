@@ -10,8 +10,7 @@ const getAllBooksOnLoad = (req, res) => {
         req.session.id_user,
         (err, resultsBorrow) => {
           userModelsReserve.getAllBorrowBooksByID(req.session.id_user, (err, resultReservers) => {
-            console.log(resultReservers)
-            res.render("index", { lista: results, borrow: resultsBorrow, reserves: resultReservers});
+            res.render("index", { lista: results, borrow: resultsBorrow, reserves: resultReservers });
           })
         }
       );
@@ -65,7 +64,6 @@ const RegisterUser = (req, res) => {
     const { fname, lname, username, email, password, cpassword, terms } =
       req.body;
     let mensagem;
-    console.log(terms);
     if (!validator.isvalidname(fname, lname)) {
       mensagem = "User invalido";
     } else if (!validator.isvalidEmail(results, email)) {
@@ -110,7 +108,6 @@ const borrow = (req, res) => {
         userModelsBorrow.borrowBook(req.session.id_user, book_id);
         res.redirect("../");
       } else {
-        console.log(`livro ocupado`);
         return;
       }
     });
@@ -131,7 +128,6 @@ const reserve = (req, res) => {
           );
           res.redirect("../");
         } else {
-          console.log(`livro já reservado`);
           return;
         }
       });
@@ -156,6 +152,22 @@ const logoutSession = (req, res) => {
   });
 };
 
+const GetAllFavoriteBooks = (req, res) => {
+  userModels.getallfavoriteBooksbyID(req.session.id_user, (err, result) => {
+    res.render('favoriteBooks', { books: result })
+  })
+
+}
+const GetAllReadBooks = (req, res) => {
+  userModels.getallreadBooksbyID(req.session.id_user, (err, result) => {
+    res.render('readBooks', { books: result })
+  })
+}
+const GetAllReadingBooks = (req, res) => {
+  userModels.getallreadingBooksbyID(req.session.id_user, (err, result) => {
+    res.render('readingBooks', { books: result })
+  })
+}
 module.exports = {
   getAllBooksOnLoad,
   searchCategory,
@@ -167,4 +179,7 @@ module.exports = {
   reserve,
   logoutSession,
   loadAdminpage,
+  GetAllFavoriteBooks,
+  GetAllReadBooks,
+  GetAllReadingBooks
 };
