@@ -14,6 +14,44 @@
 
 
 <body>
+    <nav>
+        <div class="navBarBalls">
+            <img src="/profilepics/avatars/Avatar01.svg" alt="" width="64px" height="64px">
+        </div>
+        <div class="midleBalls">
+            <a href="../">
+            <div class="navBarBalls">
+                    <img src="../imgs/navbarsquares.svg" alt="" width="24px" height="24px">
+                </div>
+            </a>
+            <a href="../category/bestseller">
+                <div class="navBarBalls">
+                    <img src="../imgs/navbarstar.svg" alt="" width="24px" height="24px">
+                </div>
+            </a>
+            <a href="../favorite">
+                <div class="navBarBalls">
+                    <img src="../imgs/heart.svg" alt="" width="24px" height="24px">
+                </div>
+            </a>
+            <a href="../read">
+                <div class="navBarBalls">
+                    <img src="../imgs/play.svg" alt="" width="24px" height="24px">
+                </div>
+            </a>
+            <a href="../reading">
+                <div class="navBarBalls">
+                    <img src="../imgs/ticket.svg" alt="" width="24px" height="24px">
+                </div>
+            </a>
+        </div>
+        <div class="navBarBalls">
+            <button type="button" class="btn btn-primary navBarBalls" data-bs-toggle="modal"
+                data-bs-target="#reservemodals">
+                <img src="../imgs/sign.svg" alt="" width="36" height="36">
+            </button>
+        </div>
+    </nav>
     <% lista.forEach(function(livro) { %>
         <div>
             <a href="../book/<%= livro.id %>">
