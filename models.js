@@ -117,7 +117,51 @@ function getallreadingBooksbyID(id, callback) {
     callback(null, results);
   });
 }
+function favoriteThisBook(id_user, id_book, callback) {
+  const query = "INSERT INTO favorite_books (ID_User, ID_Book) values (?, ?)";
+  db.query(query, [id_user, id_book], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+function readThisBook(id_user, id_book, callback) {
+  const query = "INSERT INTO read_books (ID_User, ID_Book) values (?, ?)";
+  db.query(query, [id_user, id_book], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+function readThisBook(id_user, id_book, callback) {
+  const query = "INSERT INTO read_books (ID_User, ID_Book) values (?, ?)";
+  db.query(query, [id_user, id_book], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
 
+function readingThisBook(id_user, id_book, callback) {
+  const query = "INSERT INTO reading_books (ID_User, ID_Book) values (?, ?)";
+  db.query(query, [id_user, id_book], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
 // function addUser(name, author, cape, year, description, primary_color, secound_color, gender, gender_2) {
 //     const query = `INSERT INTO books (name, author, cape, year, description, primary_color, secound_color, gender, available, gender_2)VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)`;
 //     db.query(query, [name, author, cape, year, description, primary_color, secound_color, gender, gender_2], (err, results) => {
@@ -141,5 +185,8 @@ module.exports = {
   getUserByEmail,
   getallfavoriteBooksbyID,
   getallreadBooksbyID,
-  getallreadingBooksbyID
+  getallreadingBooksbyID,
+  favoriteThisBook,
+  readThisBook,
+  readingThisBook
 };

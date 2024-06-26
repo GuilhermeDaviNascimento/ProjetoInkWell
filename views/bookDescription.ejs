@@ -19,7 +19,7 @@
         </div>
         <div class="midleBalls">
             <a href="../">
-            <div class="navBarBalls">
+                <div class="navBarBalls">
                     <img src="../imgs/navbarsquares.svg" alt="" width="24px" height="24px">
                 </div>
             </a>
@@ -85,23 +85,23 @@
                                     1)).toLocaleDateString('pt-BR')%>
                             </a>
                             <% } %>
-                            <div class="divballs">
-                                <a href="./">
-                                    <div class="navBarBalls">
-                                        <img src="../imgs/heart.svg" alt="" width="24px" height="24px">
-                                    </div>
-                                </a>
-                                <a href="./">
-                                    <div class="navBarBalls">
-                                        <img src="../imgs/play.svg" alt="" width="24px" height="24px">
-                                    </div>
-                                </a>
-                                <a href="./">
-                                    <div class="navBarBalls">
-                                        <img src="../imgs/ticket.svg" alt="" width="24px" height="24px">
-                                    </div>
-                                </a>
-                            </div>
+                                <div class="divballs">
+                                    <a href="../favoritethis/<%=book.id%>">
+                                        <div class="navBarBalls">
+                                            <img src="../imgs/heart.svg" alt="" width="24px" height="24px">
+                                        </div>
+                                    </a>
+                                    <a href="../readthis/<%=book.id%>">
+                                        <div class="navBarBalls">
+                                            <img src="../imgs/play.svg" alt="" width="24px" height="24px">
+                                        </div>
+                                    </a>
+                                    <a href="../readingthis/<%=book.id%>">
+                                        <div class="navBarBalls">
+                                            <img src="../imgs/ticket.svg" alt="" width="24px" height="24px">
+                                        </div>
+                                    </a>
+                                </div>
         </div>
     </main>
 </body>

@@ -30,6 +30,9 @@ app.get('/adminpage', userController.loadAdminpage)
 app.get('/favorite', userController.GetAllFavoriteBooks)
 app.get('/read', userController.GetAllReadBooks)
 app.get('/reading', userController.GetAllReadingBooks)
+app.get(`/favoritethis/:bookid`, userController.favoriteThisbook)
+app.get(`/readthis/:bookid`, userController.readThisbook)
+app.get(`/readingthis/:bookid`, userController.readingThisbook)
 
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');

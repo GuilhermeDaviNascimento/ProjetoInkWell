@@ -168,6 +168,22 @@ const GetAllReadingBooks = (req, res) => {
     res.render('readingBooks', { books: result })
   })
 }
+const favoriteThisbook = (req, res) => {
+  userModels.favoriteThisBook(req.session.id_user, req.params.bookid, (err, result) => {
+    res.redirect(`/`)
+  })
+}
+const readThisbook = (req, res) => {
+  userModels.readThisBook(req.session.id_user, req.params.bookid, (err, result) => {
+    res.redirect(`/`)
+  })
+}
+const readingThisbook = (req, res) => {
+  userModels.readingThisBook(req.session.id_user, req.params.bookid, (err, result) => {
+    res.redirect(`/`)
+  })
+}
+
 module.exports = {
   getAllBooksOnLoad,
   searchCategory,
@@ -181,5 +197,8 @@ module.exports = {
   loadAdminpage,
   GetAllFavoriteBooks,
   GetAllReadBooks,
-  GetAllReadingBooks
-};
+  GetAllReadingBooks,
+  favoriteThisbook,
+  readThisbook,
+  readingThisbook
+}
