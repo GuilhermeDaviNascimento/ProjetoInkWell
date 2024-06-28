@@ -47,6 +47,7 @@ const searchCategory = (req, res) => {
     });
   } else {
     userModels.getBookByCategory(category, (err, results) => {
+      console.log(results)
       res.render("categoryBook", { lista: results });
     });
   }

@@ -18,7 +18,7 @@
         </div>
         <div class="midleBalls">
             <a href="./">
-            <div class="navBarBalls">
+                <div class="navBarBalls">
                     <img src="./imgs/navbarsquares.svg" alt="" width="24px" height="24px">
                 </div>
             </a>
@@ -97,28 +97,29 @@
                     </div>
                 </div>
                 <div class="modal fade" id="reservemodals" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Your Reservers</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <% reserves.forEach(function(livro) { %>
-                            <div>
-                                <p>
-                                    <%= livro.name %>
-                                </p>
-                                <p>
-                                    <%= livro.Data_Reserva.toLocaleDateString('pt-BR') %>
-                                </p>
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Your Reservers</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                            <% }) %>
+                            <div class="modal-body">
+                                <% reserves.forEach(function(livro) { %>
+                                    <div>
+                                        <p>
+                                            <%= livro.name %>
+                                        </p>
+                                        <p>
+                                            <%= livro.Data_Reserva.toLocaleDateString('pt-BR') %>
+                                        </p>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
             </label>
         </div>
         <div class="bookList mb-5">
@@ -134,7 +135,7 @@
                 <img src="./imgs/new.svg" alt="">
                 <label for="">New</label>
             </a>
-            <a class="book" href="category/bestseller">
+            <a class="book" href="category/best-seller">
                 <img src="./imgs/bestsellers.svg" alt="">
                 <label for="">Bestsellers</label>
             </a>
@@ -179,7 +180,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Popular</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/best-seller">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -250,7 +253,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">eBooks</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/ebooks">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -321,7 +326,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">New's</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/new">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -392,7 +399,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">AudioBooks</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/audiobook">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -463,7 +472,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Fiction</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/fiction">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -534,7 +545,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Romance</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/romance">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -605,7 +618,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Fantasy</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/fantasy">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -676,7 +691,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Mangá</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/manga">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -747,7 +764,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Crime</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/crime">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -818,7 +837,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Selft Help</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/selfhelp">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -889,7 +910,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Strategy</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/strategy">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>
@@ -960,7 +983,9 @@
             <div class="infotexts  mb-3">
                 <h3 class="text-color">Terror</h3>
                 <div class="buttonspopular">
-                    <div><button class="viewAllButton text-color">View All</button></div>
+                    <a href="./category/terror">
+                        <div><button class="viewAllButton text-color">View All</button></div>
+                    </a>
                     <div><button class="menorButton text-color" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev" style="rotate: 90deg;" onclick="clickLeft()">V</button>
                     </div>

@@ -13,8 +13,8 @@ function getAllBooks(callback) {
 }
 
 function getBookByCategory(category, callback) {
-  const query = `SELECT * FROM books WHERE gender = ?`;
-  db.query(query, [category], (err, results) => {
+  const query = `SELECT * FROM books WHERE gender = ? OR gender_2 = ?`;
+  db.query(query, [category, category], (err, results) => {
     if (err) {
       console.error("Error searching books:", err);
       callback(err, null);

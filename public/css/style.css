@@ -287,3 +287,28 @@ a {
   background-color: #72564d;
   outline: none;
 }
+.separete-books{
+  width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.books{
+  width: max-content;
+  height: max-content;
+}
+
+.pb-1{
+  width: 125px;
+  height: max-content
+}
+
+.bookinfos{
+  display: flex;
+  align-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  height: 175px;
+}
