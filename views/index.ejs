@@ -14,7 +14,10 @@
 <body>
     <nav>
         <div class="navBarBalls">
-            <img src="/profilepics/avatars/Avatar01.svg" alt="" width="64px" height="64px">
+            <button type="button" class="btn btn-primary navBarBalls" data-bs-toggle="modal"
+                data-bs-target="#usermodal">
+                <img src="/profilepics/avatars/Avatar01.svg" alt="" width="64px" height="64px">
+            </button>
         </div>
         <div class="midleBalls">
             <a href="./">
@@ -51,6 +54,31 @@
         </div>
     </nav>
     <main class="p-5">
+        <!-- MODAL -->
+        <div class="modal fade" id="usermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">User</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <p>Username:</p>
+                            <p>Email:</p>
+                        </div>
+                        <div>
+                            <input type="text" name="" id="" placeholder="New Password">
+                            <input type="text" name="" id="" placeholder="Confirm New Password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM MODAL -->
         <div class="top mb-5">
             <div class="inputwithbuttonserach">
                 <label class="searchBooksInput p-4">
@@ -64,12 +92,12 @@
             <label class="buyCart">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary buyCartButton" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">
+                    data-bs-target="#modalcart">
                     <img src="imgs/cart.svg" alt="" width="36" height="36">
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="modalcart" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
