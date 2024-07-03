@@ -84,7 +84,8 @@ function getUserByEmail(email, callback) {
 }
 
 function getallfavoriteBooksbyID(id, callback) {
-  const query = "SELECT * FROM favorite_books, books, users WHERE favorite_books.ID_User = ? AND favorite_books.ID_Book = books.id AND users.id = favorite_books.ID_User";
+  const query =
+    "SELECT * FROM favorite_books, books, users WHERE favorite_books.ID_User = ? AND favorite_books.ID_Book = books.id AND users.id = favorite_books.ID_User";
   db.query(query, [id], (err, results) => {
     if (err) {
       console.error("Erro ao encontrar usuário:", err);
@@ -93,10 +94,10 @@ function getallfavoriteBooksbyID(id, callback) {
     }
     callback(null, results);
   });
-
 }
 function getallreadBooksbyID(id, callback) {
-  const query = "SELECT * FROM read_books, books, users WHERE read_books.ID_User = ? AND read_books.ID_Book = books.id AND users.id = read_books.ID_User";
+  const query =
+    "SELECT * FROM read_books, books, users WHERE read_books.ID_User = ? AND read_books.ID_Book = books.id AND users.id = read_books.ID_User";
   db.query(query, [id], (err, results) => {
     if (err) {
       console.error("Erro ao encontrar usuário:", err);
@@ -107,7 +108,8 @@ function getallreadBooksbyID(id, callback) {
   });
 }
 function getallreadingBooksbyID(id, callback) {
-  const query = "SELECT * FROM reading_books, books, users WHERE reading_books.ID_User = ? AND reading_books.ID_Book = books.id AND users.id = reading_books.ID_User";
+  const query =
+    "SELECT * FROM reading_books, books, users WHERE reading_books.ID_User = ? AND reading_books.ID_Book = books.id AND users.id = reading_books.ID_User";
   db.query(query, [id], (err, results) => {
     if (err) {
       console.error("Erro ao encontrar usuário:", err);
@@ -162,6 +164,19 @@ function readingThisBook(id_user, id_book, callback) {
     callback(null, results);
   });
 }
+
+function getuserdatas(id_user, callback) {
+  const query = "SELECT fname, lname, username, email FROM users WHERE id = ?";
+  db.query(query, [id_user], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+
 // function addUser(name, author, cape, year, description, primary_color, secound_color, gender, gender_2) {
 //     const query = `INSERT INTO books (name, author, cape, year, description, primary_color, secound_color, gender, available, gender_2)VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)`;
 //     db.query(query, [name, author, cape, year, description, primary_color, secound_color, gender, gender_2], (err, results) => {
@@ -188,5 +203,6 @@ module.exports = {
   getallreadingBooksbyID,
   favoriteThisBook,
   readThisBook,
-  readingThisBook
+  readingThisBook,
+  getuserdatas,
 };

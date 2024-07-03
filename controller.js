@@ -10,7 +10,9 @@ const getAllBooksOnLoad = (req, res) => {
         req.session.id_user,
         (err, resultsBorrow) => {
           userModelsReserve.getAllBorrowBooksByID(req.session.id_user, (err, resultReservers) => {
-            res.render("index", { lista: results, borrow: resultsBorrow, reserves: resultReservers });
+              userModels.getuserdatas(req.session.id_user, (err, datas) => {
+                res.render("index", { lista: results, borrow: resultsBorrow, reserves: resultReservers, userdatas: datas});
+              }) 
           })
         }
       );
@@ -59,6 +61,11 @@ const searchInput = (req, res) => {
     res.render("categoryBook", { lista: results });
   });
 };
+
+const changepassword = (req, res) => {
+  const newpassword = req.params.password;
+  
+}
 
 const RegisterUser = (req, res) => {
   userModels.getAllUsers((err, results) => {

@@ -56,27 +56,30 @@
     <main class="p-5">
         <!-- MODAL -->
         <div class="modal fade" id="usermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">User</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <% userdatas.forEach(function(user) { %>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">User</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div>
-                            <p>Username:</p>
-                            <p>Email:</p>
+                            <p>Name:<%= user.fname %> <%= user.lname %></p>
+                            <p>Username:<%= user.username %></p>
+                            <p>Email:<%= user.email %></p>
                         </div>
-                        <div>
-                            <input type="text" name="" id="" placeholder="New Password">
-                            <input type="text" name="" id="" placeholder="Confirm New Password">
+                        <div class="newpasswords">
+                                <input type="password" name="pass" id="passwords" placeholder="New Password">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Logout</button>
+                        <button type="button" onclick="changepassword()" class="btn btn-primary" id="botaosave">Save</button>
+                        <a type="button" href="./logout" class="btn btn-primary" id="botaologout">Logout</a>
                     </div>
                 </div>
             </div>
+            <% }) %>
         </div>
         <!-- FIM MODAL -->
         <div class="top mb-5">
