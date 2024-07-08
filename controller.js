@@ -62,11 +62,6 @@ const searchInput = (req, res) => {
   });
 };
 
-const changepassword = (req, res) => {
-  const newpassword = req.params.password;
-  
-}
-
 const RegisterUser = (req, res) => {
   userModels.getAllUsers((err, results) => {
     const { fname, lname, username, email, password, cpassword, terms } =
@@ -192,6 +187,30 @@ const readingThisbook = (req, res) => {
   })
 }
 
+const changepassword = (req, res) => {
+  userModels.changeUserPasswordByID(req.session.id_user, req.params.password, (err, result) => {
+    res.redirect(`/`)
+  })
+}
+
+const updateUser = (req, res) => {
+  console.log(req.body.email)
+  userModels.UpdateUserByEmail(req.body.fname, req.body.lname, req.body.user, req.body.password, req.body.email, (err, result) =>{
+    res.redirect('/adminpage')
+  })
+}
+const deleteUser = (req, res) => {
+  userModels.deleteUserByEmail(req.body.email, (err, result) => {
+    res.redirect('/adminpage')
+  })
+}
+
+const givebackbook = (req, res) => {
+  userModels.GiveBookBackByID(req.body.book, (err, result) => {
+    res.redirect("/adminpage")
+  })
+}
+
 module.exports = {
   getAllBooksOnLoad,
   searchCategory,
@@ -208,5 +227,9 @@ module.exports = {
   GetAllReadingBooks,
   favoriteThisbook,
   readThisbook,
-  readingThisbook
+  readingThisbook,
+  changepassword,
+  updateUser,
+  deleteUser,
+  givebackbook
 }

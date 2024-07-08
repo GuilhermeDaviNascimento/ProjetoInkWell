@@ -166,7 +166,7 @@ function readingThisBook(id_user, id_book, callback) {
 }
 
 function getuserdatas(id_user, callback) {
-  const query = "SELECT fname, lname, username, email FROM users WHERE id = ?";
+  const query = "SELECT fname, lname, username, email, password FROM users WHERE id = ?";
   db.query(query, [id_user], (err, results) => {
     if (err) {
       console.error("Erro ao encontrar usuário:", err);
@@ -177,6 +177,54 @@ function getuserdatas(id_user, callback) {
   });
 }
 
+function changeUserPasswordByID(id_user, newpassword, callback) {
+  const query = "UPDATE users SET password = ? WHERE id = ?";
+  db.query(query, [newpassword, id_user], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+
+function UpdateUserByEmail(fname, lname, username, password, email, callback) {
+  const query = "UPDATE users SET fname = ?, lname = ?, username = ?, password = ? WHERE email = ?";
+  db.query(query, [fname, lname, username, password, email], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+
+function deleteUserByEmail(email, callback){
+  const query = "DELETE FROM users WHERE email = ?";
+  console.log(email)
+  db.query(query, [email], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+
+function GiveBookBackByID(id_book, callback){
+  const query = "DELETE FROM borrow WHERE ID_Emprestimo = ?";
+  db.query(query, [id_book], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
 // function addUser(name, author, cape, year, description, primary_color, secound_color, gender, gender_2) {
 //     const query = `INSERT INTO books (name, author, cape, year, description, primary_color, secound_color, gender, available, gender_2)VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)`;
 //     db.query(query, [name, author, cape, year, description, primary_color, secound_color, gender, gender_2], (err, results) => {
@@ -205,4 +253,8 @@ module.exports = {
   readThisBook,
   readingThisBook,
   getuserdatas,
+  changeUserPasswordByID,
+  UpdateUserByEmail,
+  deleteUserByEmail,
+  GiveBookBackByID
 };

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" type="imagex/png" href="/imgs/icon.svg">
     <link rel="stylesheet" href="/css/adminpage.css">
+    <script src="/js/adminpage.js"></script>
 </head>
 
 <body>
@@ -66,8 +67,10 @@
                 <td><%= book.name %></td>
                 <td><%= book.Data_Emprestimo.toLocaleDateString('pt-BR') %></td>
                 <td><%= book.Data_Devolucao.toLocaleDateString('pt-BR') %></td>
-                <td><button type="button" class="btn btn-success">Devolver</button></td>
-                <td><button type="button" class="btn btn-warning">Entregar</button></td>
+                <form action="/givebackbook" method="post">
+                    <input type="text" value="<%= book.ID_Emprestimo %>" name="book" hidden>
+                    <td><button type="submit" class="btn btn-success">Give</button></td>
+                </form>
             </tr>
             <% }) %>
         </table>
@@ -75,20 +78,53 @@
     <div>
         Livros de Usuários
         <table>
-            <% users.forEach(function(user) { %>
             <tr>
                 <th>Usúario</th>
                 <th>Email</th>
                 <th>Username</th>
             </tr>
+            <% users.forEach(function(user) { %>
             <tr>
                 <td><%= user.fname %> <%= user.lname %></td>
                 <td><%= user.email %></td>
                 <td><%= user.username %></td>
+                <form action="/deleteUser" method="post">
+                    <input type="text" value="<%= user.email %>" name="email" hidden>
+                    <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                </form>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#<%= user.username %>">
+                        Update
+                    </button>
+                </td>
             </tr>
+                <!-- Modal -->
+    <div class="modal fade" id="<%= user.username %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Update User</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/updateuser" method="post">
+            <div class="modal-body">
+                <div class="input-group mb-3"><input type="text" class="form-control" name="email" value="<%= user.email %>" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" hidden></div>
+                <div class="input-group mb-3"><input type="text" class="form-control" name="fname" value="<%= user.fname %>" placeholder="First Name" aria-label="First Name" aria-describedby="basic-addon1"></div>
+                <div class="input-group mb-3"><input type="text" class="form-control" name="lname" value="<%= user.lname %>" placeholder="Last Name" aria-label="Last Name" aria-describedby="basic-addon1"></div>
+                <div class="input-group mb-3"><input type="text" class="form-control" name="user" value="<%= user.username %>" placeholder="First Name" aria-label="Username" aria-describedby="basic-addon1"></div>
+                <div class="input-group mb-3"><input type="text" class="form-control" name="password" value="<%= user.password %>" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+          </div>
+        </div>
             <% }) %>
         </table>
     </div>
+  </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
