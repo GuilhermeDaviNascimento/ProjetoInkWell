@@ -9,11 +9,27 @@ const getAllBooksOnLoad = (req, res) => {
       userModelsBorrow.getBorrowBooksByID(
         req.session.id_user,
         (err, resultsBorrow) => {
-          userModelsReserve.getAllBorrowBooksByID(req.session.id_user, (err, resultReservers) => {
+          userModelsReserve.getAllBorrowBooksByID(
+            req.session.id_user,
+            (err, resultReservers) => {
               userModels.getuserdatas(req.session.id_user, (err, datas) => {
-                res.render("index", { lista: results, borrow: resultsBorrow, reserves: resultReservers, userdatas: datas});
-              }) 
-          })
+                  const date = new Date();
+                  userModelsBorrow.GetBooksClosetoExpirationDateByID(
+                    req.session.id_user,
+                    date,
+                    (err, notificaions) => {
+                      res.render("index", {
+                        lista: results,
+                        borrow: resultsBorrow,
+                        reserves: resultReservers,
+                        userdatas: datas,
+                        notificaion: notificaions,
+                      });
+                    }
+                  );
+              });
+            }
+          );
         }
       );
     });
@@ -25,20 +41,30 @@ const getAllBooksOnLoad = (req, res) => {
 const loadBookPage = (req, res) => {
   const { book_id } = req.params;
   let isfullborrow = {
-    full: true
-  }
+    full: true,
+  };
   userModels.getBookByID(book_id, (err, result) => {
     userModelsBorrow.getBorrowDatByID(book_id, (err, book) => {
       userModelsBorrow.getBorrowBooksByID(
-        req.session.id_user, (err, borrows) => {
+        req.session.id_user,
+        (err, borrows) => {
           if (borrows.length >= 3) {
-            res.render(`bookDescription`, { book: result, borrow: book, isfullborrows: isfullborrow });
+            res.render(`bookDescription`, {
+              book: result,
+              borrow: book,
+              isfullborrows: isfullborrow,
+            });
           } else {
-            isfullborrow.full = false
-            res.render(`bookDescription`, { book: result, borrow: book, isfullborrows: isfullborrow });
+            isfullborrow.full = false;
+            res.render(`bookDescription`, {
+              book: result,
+              borrow: book,
+              isfullborrows: isfullborrow,
+            });
           }
-        })
-    })
+        }
+      );
+    });
   });
 };
 const searchCategory = (req, res) => {
@@ -49,7 +75,7 @@ const searchCategory = (req, res) => {
     });
   } else {
     userModels.getBookByCategory(category, (err, results) => {
-      console.log(results)
+      console.log(results);
       res.render("categoryBook", { lista: results });
     });
   }
@@ -143,10 +169,10 @@ const reserve = (req, res) => {
 const loadAdminpage = (req, res) => {
   userModelsBorrow.getAllBorrowBooks((err, allbooksborrow) => {
     userModels.getAllUsers((err, users) => {
-      res.render('adminpage', { borrowBooks: allbooksborrow, users: users })
-    })
-  })
-}
+      res.render("adminpage", { borrowBooks: allbooksborrow, users: users });
+    });
+  });
+};
 
 const logoutSession = (req, res) => {
   req.session.destroy(function (err) {
@@ -157,59 +183,81 @@ const logoutSession = (req, res) => {
 
 const GetAllFavoriteBooks = (req, res) => {
   userModels.getallfavoriteBooksbyID(req.session.id_user, (err, result) => {
-    res.render('favoriteBooks', { books: result })
-  })
-
-}
+    res.render("favoriteBooks", { books: result });
+  });
+};
 const GetAllReadBooks = (req, res) => {
   userModels.getallreadBooksbyID(req.session.id_user, (err, result) => {
-    res.render('readBooks', { books: result })
-  })
-}
+    res.render("readBooks", { books: result });
+  });
+};
 const GetAllReadingBooks = (req, res) => {
   userModels.getallreadingBooksbyID(req.session.id_user, (err, result) => {
-    res.render('readingBooks', { books: result })
-  })
-}
+    res.render("readingBooks", { books: result });
+  });
+};
 const favoriteThisbook = (req, res) => {
-  userModels.favoriteThisBook(req.session.id_user, req.params.bookid, (err, result) => {
-    res.redirect(`/`)
-  })
-}
+  userModels.favoriteThisBook(
+    req.session.id_user,
+    req.params.bookid,
+    (err, result) => {
+      res.redirect(`/`);
+    }
+  );
+};
 const readThisbook = (req, res) => {
-  userModels.readThisBook(req.session.id_user, req.params.bookid, (err, result) => {
-    res.redirect(`/`)
-  })
-}
+  userModels.readThisBook(
+    req.session.id_user,
+    req.params.bookid,
+    (err, result) => {
+      res.redirect(`/`);
+    }
+  );
+};
 const readingThisbook = (req, res) => {
-  userModels.readingThisBook(req.session.id_user, req.params.bookid, (err, result) => {
-    res.redirect(`/`)
-  })
-}
+  userModels.readingThisBook(
+    req.session.id_user,
+    req.params.bookid,
+    (err, result) => {
+      res.redirect(`/`);
+    }
+  );
+};
 
 const changepassword = (req, res) => {
-  userModels.changeUserPasswordByID(req.session.id_user, req.params.password, (err, result) => {
-    res.redirect(`/`)
-  })
-}
+  userModels.changeUserPasswordByID(
+    req.session.id_user,
+    req.params.password,
+    (err, result) => {
+      res.redirect(`/`);
+    }
+  );
+};
 
 const updateUser = (req, res) => {
-  console.log(req.body.email)
-  userModels.UpdateUserByEmail(req.body.fname, req.body.lname, req.body.user, req.body.password, req.body.email, (err, result) =>{
-    res.redirect('/adminpage')
-  })
-}
+  console.log(req.body.email);
+  userModels.UpdateUserByEmail(
+    req.body.fname,
+    req.body.lname,
+    req.body.user,
+    req.body.password,
+    req.body.email,
+    (err, result) => {
+      res.redirect("/adminpage");
+    }
+  );
+};
 const deleteUser = (req, res) => {
   userModels.deleteUserByEmail(req.body.email, (err, result) => {
-    res.redirect('/adminpage')
-  })
-}
+    res.redirect("/adminpage");
+  });
+};
 
 const givebackbook = (req, res) => {
   userModels.GiveBookBackByID(req.body.book, (err, result) => {
-    res.redirect("/adminpage")
-  })
-}
+    res.redirect("/adminpage");
+  });
+};
 
 module.exports = {
   getAllBooksOnLoad,
@@ -231,5 +279,5 @@ module.exports = {
   changepassword,
   updateUser,
   deleteUser,
-  givebackbook
-}
+  givebackbook,
+};

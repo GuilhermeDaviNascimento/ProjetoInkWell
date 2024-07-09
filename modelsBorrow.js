@@ -87,11 +87,25 @@ function getDateBorrowByID(id, callback) {
     });
   }
 
+function GetBooksClosetoExpirationDateByID(id, thisdate, callback){
+      const minborrowdate = thisdate + 7
+      const query = `SELECT * FROM borrow, books WHERE borrow.ID_Usuario = ? AND ? >= borrow.Data_Devolucao AND borrow.ID_Livro = books.ID`;
+      db.query(query, [id, thisdate], (err, notifications) => {
+      if (err) {
+        console.error("Error searching books:", err);
+        callback(err, null);
+        return;
+      }
+      callback(null, notifications);
+    });
+}
+
 module.exports = {
     getBorrowDatByID,
     getAllBorrowBooks,
     isAvailable,
     borrowBook,
     getBorrowBooksByID,
-    getDateBorrowByID
+    getDateBorrowByID,
+    GetBooksClosetoExpirationDateByID
 }
