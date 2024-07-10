@@ -14,7 +14,7 @@ Perguntas:
 3. Sim, é possível adicionar o mesmo livro mais de uma vez nos favoritos, lidos e lendo.
 
 4 .
-Guilherme: Foi uma experiência incrível; foi como um teste de todos os conhecimentos adquiridos até agora no curso. A greve foi o meu maior desafio, pois começamos o desenvolvimento antes dela e, ao retornar às aulas, estava completamente perdido em tudo que já havíamos feito.
+    Guilherme: Foi uma experiência incrível; foi como um teste de todos os conhecimentos adquiridos até agora no curso. A greve foi o meu maior desafio, pois começamos o desenvolvimento antes dela e, ao retornar às aulas, estava completamente perdido em tudo que já havíamos feito.
 
     Adolfo: Minha experiência foi ótima, trabalhei com meus amigos em equipe, e obtive bastante conhecimento que não tinha.  Minha maior dificuldade foi a falta de tempo, porque meu dia a dia na greve foi bastante corrido, e tive que me desdobrar.
 
@@ -23,7 +23,7 @@ Guilherme: Foi uma experiência incrível; foi como um teste de todos os conheci
     Emanuel: Foi um projeto de bastante aprendizado junto aos meus companheiros, desenvolvemos muito conhecimento durante o desenvolvimento da aplicação.
     A minha maior dificuldade foi trabalhar em equipe, dividindo responsabilidades e compreender o codigo que os meus parceiros estavam a desenvolver.
     Além do mais, nunca tive que lidar com tamanha responsabilidade de um projeto com essa dimensão, que envolvesse três matérias. E isso foi de grande aprendizado e experiência.
-    
+
 Referências:
 Dribbble
 
