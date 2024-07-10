@@ -1,9 +1,9 @@
 Integrantes:
 
-Guilherme Davi: Desenvolvedor Backend, responsável pelo auxílio no FrontEnd e banco de dados.
-Anthony Sales: Desenvolvedor FrontEnd, responsável pelas telas de login e registro, além de encontrar bugs na aplicação.
-Emanuel Carlos: Desenvolvedor, responsável por criar e popular o banco de dados.
-José Adolfo: Desenvolvedor FrontEnd, responsável pela interface e telas do site.
+    Guilherme Davi: Desenvolvedor Backend, responsável pelo auxílio no FrontEnd e banco de dados.
+    Anthony Sales: Desenvolvedor FrontEnd, responsável pelas telas de login e registro, além de encontrar bugs na aplicação.
+    Emanuel Carlos: Desenvolvedor, responsável por criar e popular o banco de dados.
+    José Adolfo: Desenvolvedor FrontEnd, responsável pela interface e telas do site.
 
 Perguntas:
 
