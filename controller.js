@@ -13,20 +13,54 @@ const getAllBooksOnLoad = (req, res) => {
             req.session.id_user,
             (err, resultReservers) => {
               userModels.getuserdatas(req.session.id_user, (err, datas) => {
-                  const date = new Date();
-                  userModelsBorrow.GetBooksClosetoExpirationDateByID(
-                    req.session.id_user,
-                    date,
-                    (err, notificaions) => {
-                      res.render("index", {
-                        lista: results,
-                        borrow: resultsBorrow,
-                        reserves: resultReservers,
-                        userdatas: datas,
-                        notificaion: notificaions,
+                const date = new Date();
+                const dia = date.getDate();
+                const mes = date.getMonth() + 1;
+                const ano = date.getFullYear();
+                let dataSeteDiasFrente = new Date(date);
+                dataSeteDiasFrente.setDate(date.getDate() + 7);
+                let semanaquevemdia = dataSeteDiasFrente.getDate();
+                let semanaquevemmes = dataSeteDiasFrente.getMonth() + 1;
+                let semanaquevemano = dataSeteDiasFrente.getFullYear();
+
+                const formateddate = `${ano}-${mes}-${dia}`;
+                const formatdate7diasdepois = `${semanaquevemano}-${semanaquevemmes}-${semanaquevemdia}`;
+                userModelsBorrow.OverdueLoans(
+                  req.session.id_user,
+                  formateddate,
+                  (err, result) => {
+                    if (result.length > 0) {
+                      result.forEach((book) => {
+                        userModelsBorrow.insertFine(
+                          book.ID_Usuario,
+                          book.ID_Livro,
+                          book.Multa,
+                          (err, result) => {}
+                        );
                       });
                     }
-                  );
+                  }
+                );
+                userModelsBorrow.GetBooksClosetoExpirationDateByID(
+                  req.session.id_user,
+                  formatdate7diasdepois,
+                  (err, notificaions) => {
+                    userModelsBorrow.serachFines(
+                      req.session.id_user,
+                      (err, fine) => {
+                        console.log(fine)
+                        res.render("index", {
+                          lista: results,
+                          borrow: resultsBorrow,
+                          reserves: resultReservers,
+                          userdatas: datas,
+                          notificaion: notificaions,
+                          fines: fine,
+                        });
+                      }
+                    );
+                  }
+                );
               });
             }
           );
@@ -75,7 +109,6 @@ const searchCategory = (req, res) => {
     });
   } else {
     userModels.getBookByCategory(category, (err, results) => {
-      console.log(results);
       res.render("categoryBook", { lista: results });
     });
   }
@@ -235,7 +268,6 @@ const changepassword = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-  console.log(req.body.email);
   userModels.UpdateUserByEmail(
     req.body.fname,
     req.body.lname,
@@ -258,6 +290,13 @@ const givebackbook = (req, res) => {
     res.redirect("/adminpage");
   });
 };
+
+// const getOverdueLoans = (req, res) => {
+//   const date = new Date();
+//   userModelsBorrow.OverdueLoans(req.session.id_user, date, (err, result) => {
+//     console.log(result)
+//   });
+// };
 
 module.exports = {
   getAllBooksOnLoad,

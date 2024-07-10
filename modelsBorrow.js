@@ -88,7 +88,6 @@ function getDateBorrowByID(id, callback) {
   }
 
 function GetBooksClosetoExpirationDateByID(id, thisdate, callback){
-      const minborrowdate = thisdate + 7
       const query = `SELECT * FROM borrow, books WHERE borrow.ID_Usuario = ? AND ? >= borrow.Data_Devolucao AND borrow.ID_Livro = books.ID`;
       db.query(query, [id, thisdate], (err, notifications) => {
       if (err) {
@@ -99,6 +98,41 @@ function GetBooksClosetoExpirationDateByID(id, thisdate, callback){
       callback(null, notifications);
     });
 }
+function OverdueLoans (id_user, thisdate, callback){
+    const query = `SELECT * FROM borrow WHERE ID_Usuario = ? AND Data_Devolucao < ?`;
+    db.query(query, [id_user, thisdate], (err, result) => {
+    if (err) {
+      console.error("Error searching books:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, result);
+  });
+}
+
+function serachFines(id_user, callback){
+    const query = `SELECT * FROM fines, books WHERE fines.ID_USER = ? AND fines.ID_Book = books.id`;
+    db.query(query, [id_user], (err, result) => {
+    if (err) {
+      console.error("Error searching books:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, result);
+  });
+}
+
+function insertFine(user_id, book_id, price, callback){
+    const query = `INSERT INTO fines (ID_USER, ID_BOOK, PRICE) VALUES (?, ?, ?)`;
+    db.query(query, [user_id, book_id, price], (err, result) => {
+    if (err) {
+      console.error("Error searching books:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, result);
+  });
+}
 
 module.exports = {
     getBorrowDatByID,
@@ -107,5 +141,8 @@ module.exports = {
     borrowBook,
     getBorrowBooksByID,
     getDateBorrowByID,
-    GetBooksClosetoExpirationDateByID
+    GetBooksClosetoExpirationDateByID,
+    serachFines,
+    insertFine,
+    OverdueLoans
 }

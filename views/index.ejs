@@ -115,6 +115,13 @@
               <h1 class="modal-title fs-5" id="exampleModalLabel">
                 Your Fines
               </h1>
+              <% fines.forEach(function(livros) { %>
+                <div>
+                  <p>Book: <%= livros.name %></p>
+                  <p>Price: <%= livros.PRICE %>$</p>
+                  <hr />
+                </div>
+                <% }) %>
             </div>
           </div>
         </div>
@@ -333,7 +340,7 @@
         <div class="infotexts mb-3">
           <h3 class="text-color">Popular</h3>
           <div class="buttonspopular">
-            <a href="./category/best-seller">
+            <a href="./category/ebooks">
               <div>
                 <button class="viewAllButton text-color">View All</button>
               </div>
@@ -366,9 +373,8 @@
         </div>
         <div class="booksInCategory carousel-list outer">
           <div class="flex-container" id="flex-container">
-            <% lista.forEach(function(livro) { %> <% if
-            (livro.gender==="best-seller" || livro.gender_2==="best-seller" ) {
-            %>
+            <% lista.forEach(function(livro) { %> <% if (livro.gender==="best-seller"
+            || livro.gender_2==="best-seller" ) { %>
             <div class="booklistcategoryhorz">
               <a href="../book/<%= livro.id %>">
                 <svg
@@ -445,9 +451,7 @@
                   </defs>
                 </svg>
                 <div>
-                  <h4 class="pb-1 text-color bookstitles">
-                    <p><%= livro.name %></p>
-                  </h4>
+                  <h4 class="pb-1 text-color bookstitles"><%= livro.name %></h4>
                   <p class="text-danger"><%= livro.author %></p>
                 </div>
               </a>
