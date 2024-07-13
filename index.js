@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 const userController = require(`./controller.js`);
+require('dotenv').config()
 
 app.use(
   session({
@@ -39,6 +40,9 @@ app.get(`/readingthis/:bookid`, userController.readingThisbook);
 app.post("/updateuser", userController.updateUser);
 app.post('/deleteUser', userController.deleteUser)
 app.post("/givebackbook", userController.givebackbook)
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
+app.get("/createnewbook", userController.createnewbook)
+app.post("/createbook", userController.createthisbook)
+
+app.listen(8080, () => {
+  console.log("Servidor rodando na porta 8080");
 });

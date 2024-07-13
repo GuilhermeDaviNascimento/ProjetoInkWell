@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inkwell</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="shortcut icon" type="imagex/png" href="/imgs/icon.svg" />
+    <link rel="icon" type="image/x-icon" href="/imgs/registerimage.svg" />
+    <script src="/js/createbook.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navBarBalls">
+        <img
+          src="/profilepics/avatars/Avatar01.svg"
+          alt=""
+          width="64px"
+          height="64px"
+        />
+      </div>
+      <div class="midleBalls">
+        <a href="./">
+          <div class="navBarBalls">
+            <img
+              src="./imgs/navbarsquares.svg"
+              alt=""
+              width="24px"
+              height="24px"
+            />
+          </div>
+        </a>
+        <a href="./category/bestseller">
+          <div class="navBarBalls">
+            <img
+              src="./imgs/navbarstar.svg"
+              alt=""
+              width="24px"
+              height="24px"
+            />
+          </div>
+        </a>
+        <a href="./favorite">
+          <div class="navBarBalls">
+            <img src="./imgs/heart.svg" alt="" width="24px" height="24px" />
+          </div>
+        </a>
+        <a href="./read">
+          <div class="navBarBalls">
+            <img src="./imgs/play.svg" alt="" width="24px" height="24px" />
+          </div>
+        </a>
+        <a href="./reading">
+          <div class="navBarBalls">
+            <img src="./imgs/ticket.svg" alt="" width="24px" height="24px" />
+          </div>
+        </a>
+      </div>
+      <div class="navBarBalls">
+        <button
+          type="button"
+          class="btn btn-primary navBarBalls"
+          data-bs-toggle="modal"
+          data-bs-target="#reservemodals"
+        >
+          <img src="imgs/sign.svg" alt="" width="36" height="36" />
+        </button>
+      </div>
+    </nav>
+    <main class="p-5 d-flex flex-row">
+      <form action="/createbook" method="post">
+        <div class="me-5">
+          <div>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name"
+                aria-label="Name"
+                name="name"
+                required
+                aria-describedby="basic-addon1"
+                id="name"
+                \
+                value="Title"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Author"
+                aria-label="Author"
+                value="Author"
+                name="author"
+                required
+                id="author"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Cape Link"
+                aria-label="Cape"
+                name="cape"
+                id="cape"
+                required
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Year"
+                aria-label="Year"
+                required
+                name="year"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Description"
+                aria-label="Description"
+                required
+                name="description"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="color"
+                class="form-control"
+                placeholder="Primary Color"
+                aria-label="PrimaryC"
+                id="colorpicker1"
+                name="color1"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="color"
+                class="form-control"
+                placeholder="Secound Color"
+                aria-label="SecoundC"
+                id="colorpicker2"
+                name="color2"
+                aria-describedby="basic-addon1"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <select
+                type="text"
+                class="form-control"
+                aria-label="Gender"
+                name="gender1"
+                aria-describedby="basic-addon1"
+              >
+              <option value="ebooks">Ebooks</option>
+              <option value="new">New</option>
+              <option value="best-sellers">Best Sellers</option>
+              <option value="audiobooks">Audiobooks</option>
+              <option value="romance">Romance</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="manga">Manga</option>
+              <option value="crime">Crime</option>
+              <option value="selfhelp">Selfhelp</option>
+              <option value="strategy">Strategy</option>
+              <option value="terror">Terror</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <select
+                type="text"
+                class="form-control"
+                aria-label="Gender"
+                name="gender2"
+                aria-describedby="basic-addon1"
+              >
+                <option value="ebooks">Ebooks</option>
+                <option value="new">New</option>
+                <option value="best-sellers">Best Sellers</option>
+                <option value="audiobooks">Audiobooks</option>
+                <option value="romance">Romance</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="manga">Manga</option>
+                <option value="crime">Crime</option>
+                <option value="selfhelp">Selfhelp</option>
+                <option value="strategy">Strategy</option>
+                <option value="terror">Terror</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="booklistcategoryhorz">
+            <svg
+              width="138"
+              height="232"
+              viewBox="0 0 138 232"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <path
+                d="M20.5 -8.96084e-07C9.17816 -1.39098e-06 -2.32961e-05 9.33228 -2.40077e-05 25.6125L2.95992e-05 195.551C2.93469e-05 201.322 3.14129 206 7.01623 206L41 206L41 29.478C41 13.1977 31.8218 -4.01191e-07 20.5 -8.96084e-07Z"
+                fill="#1f89bb"
+                id="color1"
+              />
+              <path
+                d="M0 196.768C0 208.064 6.25172 217.221 17.1579 217.221L131 217.221C134.866 217.221 138 214.087 138 210.221V176.316L19.7474 176.316C8.8412 176.316 0 185.473 0 196.768Z"
+                fill="#1f89bb"
+                id="color2"
+              />
+              <path
+                d="M23.7474 186.689H137.5V208.258H23.7474C17.7915 208.258 12.9632 203.43 12.9632 197.474C12.9632 191.518 17.7915 186.689 23.7474 186.689Z"
+                fill="url(#paint0_linear_1_67-787405)"
+                stroke="#FFF4F3"
+              />
+              <path
+                d="M97.3948 189.189C97.3948 187.698 98.6036 186.489 100.095 186.489H119.484C120.975 186.489 122.184 187.698 122.184 189.189V226.472C122.184 228.479 120.072 229.785 118.277 228.887L111.265 225.381C110.336 224.917 109.243 224.917 108.314 225.381L101.302 228.887C99.507 229.785 97.3948 228.479 97.3948 226.472V189.189Z"
+                fill="url(#paint1_linear_1_67-131424)"
+                stroke="#E9A351"
+                stroke-width="0.6"
+              />
+              <path
+                d="M20.9263 -1.52588e-05H131C134.866 -1.52588e-05 138 3.13399 138 6.99998V176.316H20.9263V-1.52588e-05Z"
+                fill="url(#0)"
+                height="396"
+              />
+              <defs>
+                <pattern
+                  id="0"
+                  patternContentUnits="objectBoundingBox"
+                  width="1"
+                  height="1"
+                >
+                  <use
+                    xlink:href="#00"
+                    transform="matrix(0.00396825 0 0 0.00263492 0 -0.0217143)"
+                  />
+                </pattern>
+                <linearGradient
+                  id="paint0_linear_1_67-787405"
+                  x1="75.2316"
+                  y1="186.189"
+                  x2="75.2316"
+                  y2="208.758"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#DFD4C3" />
+                  <stop offset="1" stop-color="#EBE6DB" />
+                </linearGradient>
+                <linearGradient
+                  id="paint1_linear_1_67-131424"
+                  x1="109.79"
+                  y1="186.189"
+                  x2="109.79"
+                  y2="231.326"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#FFC375" />
+                  <stop offset="1" stop-color="#EBAC64" />
+                </linearGradient>
+                <image
+                  id="00"
+                  height="396"
+                  xlink:href="https://m.media-amazon.com/images/I/51B5jusB8SL.jpg"
+                />
+              </defs>
+            </svg>
+            <div>
+              <h4 class="pb-1 text-color bookstitles" id="title">Title</h4>
+              <p class="text-danger" id="authortext">Author</p>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-success">Create</button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/js/script.js"></script>
+</html>

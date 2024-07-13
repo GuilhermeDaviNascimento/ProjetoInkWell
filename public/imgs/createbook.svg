@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="691" height="818" fill="none" viewBox="0 0 691 818">
+  <path fill="#E3DBD0" stroke="#C4B8AC" stroke-width="10" d="M151.717 727.043h5V111.891c0-29.03-8.174-55.527-21.649-74.902C121.606 17.63 102.52 5 80.858 5c-21.019 0-40.132 8.7-53.914 24.926C13.198 46.11 5 69.47 5 98.53v587.395c0 10.83 2.939 20.86 7.952 28.327 4.992 7.434 12.428 12.791 21.3 12.791h117.465Z"/>
+  <path fill="#CFC7BD" stroke="#C4B8AC" stroke-width="10" d="M492 619.439v-5H78.257C37.634 614.439 5 648.496 5 690.134c0 20.391 5.638 39.232 16.595 53.09 11.047 13.974 27.31 22.605 47.712 22.605h393.497c16.124 0 29.196-13.071 29.196-29.196V619.439Z"/>
+  <path fill="url(#a)" stroke="#C4B8AC" stroke-width="10" d="M492 653.568v-5H73.08c-13.808 0-25 11.193-25 25v38.008c0 13.807 11.192 25 25 25H492v-83.008Z"/>
+  <path fill="url(#b)" stroke="#C4B8AC" stroke-width="10" d="M430.369 648.568H348.61a8 8 0 0 0-8 8V804.73c0 5.947 6.258 9.815 11.578 7.155l37.301-18.651 37.302 18.651c5.32 2.66 11.578-1.208 11.578-7.155V656.568a8 8 0 0 0-8-8Z"/>
+  <path fill="#E8E2DA" stroke="#C4B8AC" stroke-width="10" d="M82 5h-5v610h415V17c0-6.627-5.373-12-12-12H82Z"/>
+  <mask id="c" width="349" height="349" x="341" y="349" fill="#000" maskUnits="userSpaceOnUse">
+    <path fill="#fff" d="M341 349h349v349H341z"/>
+    <path d="M487.841 687.199V359.074h55.682v328.125h-55.682ZM351.619 550.977v-55.682h328.125v55.682H351.619Z"/>
+  </mask>
+  <path fill="#E8E2DA" d="M487.841 687.199V359.074h55.682v328.125h-55.682ZM351.619 550.977v-55.682h328.125v55.682H351.619Z"/>
+  <path fill="#C4B8AC" d="M487.841 687.199h-10v10h10v-10Zm0-328.125v-10h-10v10h10Zm55.682 0h10v-10h-10v10Zm0 328.125v10h10v-10h-10ZM351.619 550.977h-10v10h10v-10Zm0-55.682v-10h-10v10h10Zm328.125 0h10v-10h-10v10Zm0 55.682v10h10v-10h-10ZM497.841 687.199V359.074h-20v328.125h20Zm-10-318.125h55.682v-20h-55.682v20Zm45.682-10v328.125h20V359.074h-20Zm10 318.125h-55.682v20h55.682v-20ZM361.619 550.977v-55.682h-20v55.682h20Zm-10-45.682h328.125v-20H351.619v20Zm318.125-10v55.682h20v-55.682h-20Zm10 45.682H351.619v20h328.125v-20Z" mask="url(#c)"/>
+  <defs>
+    <linearGradient id="a" x1="270.039" x2="270.039" y1="653.568" y2="731.576" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DFD4C3"/>
+      <stop offset="1" stop-color="#EBE6DB"/>
+    </linearGradient>
+    <linearGradient id="b" x1="389.489" x2="389.489" y1="653.568" y2="809.584" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC375"/>
+      <stop offset="1" stop-color="#EBAC64"/>
+    </linearGradient>
+  </defs>
+</svg>

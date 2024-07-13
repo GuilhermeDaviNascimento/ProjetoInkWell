@@ -1,5 +1,92 @@
 const db = require("./bd");
 
+//FUNÇÕES DE USÚARIO (LOGIN, REGISTER...)
+function getAllUsers(callback) {
+  const query = `SELECT * FROM users`;
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("Error searching books:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+
+function addUser(fname, lname, username, email, password) {
+  const query = `INSERT INTO users (fname, lname, username, email, password)VALUES (?, ?, ?, ?, ?)`;
+  db.query(query, [fname, lname, username, email, password], (err, results) => {
+    if (err) {
+      console.error("Error searching books:", err);
+      return;
+    }
+  });
+}
+
+function getUserByEmail(email, callback) {
+  const query = "SELECT * FROM users WHERE email = ?";
+  db.query(query, [email], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results[0]); // Retorna apenas o primeiro usuário encontrado
+  });
+}
+
+function getuserdatas(id_user, callback) {
+  const query =
+    "SELECT fname, lname, username, email, password, admin FROM users WHERE id = ?";
+  db.query(query, [id_user], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results[0]);
+  });
+}
+
+function changeUserPasswordByID(id_user, newpassword, callback) {
+  const query = "UPDATE users SET password = ? WHERE id = ?";
+  db.query(query, [newpassword, id_user], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+
+function UpdateUserByEmail(fname, lname, username, password, email, callback) {
+  const query =
+    "UPDATE users SET fname = ?, lname = ?, username = ?, password = ? WHERE email = ?";
+  db.query(query, [fname, lname, username, password, email], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+
+function deleteUserByEmail(email, callback) {
+  const query = "DELETE FROM users WHERE email = ?";
+  db.query(query, [email], (err, results) => {
+    if (err) {
+      console.error("Erro ao encontrar usuário:", err);
+      callback(err, null);
+      return;
+    }
+    callback(null, results);
+  });
+}
+//FIM DAS FUNÇÕES DE USÚARIO.
+
+//FUNCÕES DE PESQUISA NO BANCO DE DADOS (ENVOLVENDO LIVROS)
 function getAllBooks(callback) {
   const query = `SELECT * FROM books`;
   db.query(query, (err, results) => {
@@ -49,40 +136,6 @@ function getBookByInput(name, callback) {
   });
 }
 
-function getAllUsers(callback) {
-  const query = `SELECT * FROM users`;
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error("Error searching books:", err);
-      callback(err, null);
-      return;
-    }
-    callback(null, results);
-  });
-}
-
-function addUser(fname, lname, username, email, password) {
-  const query = `INSERT INTO users (fname, lname, username, email, password)VALUES (?, ?, ?, ?, ?)`;
-  db.query(query, [fname, lname, username, email, password], (err, results) => {
-    if (err) {
-      console.error("Error searching books:", err);
-      return;
-    }
-  });
-}
-
-function getUserByEmail(email, callback) {
-  const query = "SELECT * FROM users WHERE email = ?";
-  db.query(query, [email], (err, results) => {
-    if (err) {
-      console.error("Erro ao encontrar usuário:", err);
-      callback(err, null);
-      return;
-    }
-    callback(null, results[0]); // Retorna apenas o primeiro usuário encontrado
-  });
-}
-
 function getallfavoriteBooksbyID(id, callback) {
   const query =
     "SELECT * FROM favorite_books, books, users WHERE favorite_books.ID_User = ? AND favorite_books.ID_Book = books.id AND users.id = favorite_books.ID_User";
@@ -119,6 +172,11 @@ function getallreadingBooksbyID(id, callback) {
     callback(null, results);
   });
 }
+
+//FIM DAS FUNCÕES DE PESQUISA NO BANCO DE DADOS
+
+//FUNÇÕES DE INSERIR DADOS NAS TABELAS (ENVOLVENDO LIVROS)
+
 function favoriteThisBook(id_user, id_book, callback) {
   const query = "INSERT INTO favorite_books (ID_User, ID_Book) values (?, ?)";
   db.query(query, [id_user, id_book], (err, results) => {
@@ -165,56 +223,38 @@ function readingThisBook(id_user, id_book, callback) {
   });
 }
 
-function getuserdatas(id_user, callback) {
-  const query = "SELECT fname, lname, username, email, password FROM users WHERE id = ?";
-  db.query(query, [id_user], (err, results) => {
-    if (err) {
-      console.error("Erro ao encontrar usuário:", err);
-      callback(err, null);
-      return;
+function createBook(
+  name,
+  author,
+  cape,
+  year,
+  description,
+  color1,
+  color2,
+  gender1,
+  gender2,
+  callback
+) {
+  const query =
+    "INSERT INTO books (name, author, cape, year, description, primary_color, secound_color, gender, gender_2) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  db.query(
+    query,
+    [name, author, cape, year, description, color1, color2, gender1, gender2],
+    (err, results) => {
+      if (err) {
+        console.error("Erro ao encontrar usuário:", err);
+        callback(err, null);
+        return;
+      }
+      callback(null, results);
     }
-    callback(null, results);
-  });
+  );
 }
 
-function changeUserPasswordByID(id_user, newpassword, callback) {
-  const query = "UPDATE users SET password = ? WHERE id = ?";
-  db.query(query, [newpassword, id_user], (err, results) => {
-    if (err) {
-      console.error("Erro ao encontrar usuário:", err);
-      callback(err, null);
-      return;
-    }
-    callback(null, results);
-  });
-}
+//FIM DAS FUNÇÕES DE INSERIR DADOS NAS TABELAS
 
-function UpdateUserByEmail(fname, lname, username, password, email, callback) {
-  const query = "UPDATE users SET fname = ?, lname = ?, username = ?, password = ? WHERE email = ?";
-  db.query(query, [fname, lname, username, password, email], (err, results) => {
-    if (err) {
-      console.error("Erro ao encontrar usuário:", err);
-      callback(err, null);
-      return;
-    }
-    callback(null, results);
-  });
-}
-
-function deleteUserByEmail(email, callback){
-  const query = "DELETE FROM users WHERE email = ?";
-  console.log(email)
-  db.query(query, [email], (err, results) => {
-    if (err) {
-      console.error("Erro ao encontrar usuário:", err);
-      callback(err, null);
-      return;
-    }
-    callback(null, results);
-  });
-}
-
-function GiveBookBackByID(id_book, callback){
+//FUNÇÕES DE DELETAR DADOS DA TABELA (ENVOLVENDO LIVROS)
+function GiveBookBackByID(id_book, callback) {
   const query = "DELETE FROM borrow WHERE ID_Emprestimo = ?";
   db.query(query, [id_book], (err, results) => {
     if (err) {
@@ -225,18 +265,7 @@ function GiveBookBackByID(id_book, callback){
     callback(null, results);
   });
 }
-// function addUser(name, author, cape, year, description, primary_color, secound_color, gender, gender_2) {
-//     const query = `INSERT INTO books (name, author, cape, year, description, primary_color, secound_color, gender, available, gender_2)VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)`;
-//     db.query(query, [name, author, cape, year, description, primary_color, secound_color, gender, gender_2], (err, results) => {
-//         if (err) {
-//             console.error('Error searching books:', err);
-//             return;
-//         }
-//     });
-// }
-// books.forEach(book => {
-//     addUser(book.name, book.author, book.cape, book.year, book.description, book.primary_color, book.secondary_color, book.gender, book.gender_2)
-// });
+//FIM FUNÇÕES DE DELETAR DADOS DA TABELA
 
 module.exports = {
   getAllBooks,
@@ -256,5 +285,6 @@ module.exports = {
   changeUserPasswordByID,
   UpdateUserByEmail,
   deleteUserByEmail,
-  GiveBookBackByID
+  GiveBookBackByID,
+  createBook
 };

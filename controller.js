@@ -48,7 +48,6 @@ const getAllBooksOnLoad = (req, res) => {
                     userModelsBorrow.serachFines(
                       req.session.id_user,
                       (err, fine) => {
-                        console.log(fine)
                         res.render("index", {
                           lista: results,
                           borrow: resultsBorrow,
@@ -200,10 +199,19 @@ const reserve = (req, res) => {
 };
 
 const loadAdminpage = (req, res) => {
-  userModelsBorrow.getAllBorrowBooks((err, allbooksborrow) => {
-    userModels.getAllUsers((err, users) => {
-      res.render("adminpage", { borrowBooks: allbooksborrow, users: users });
-    });
+  userModels.getuserdatas(req.session.id_user, (err, datas) => {
+    if (datas.admin === "yes") {
+      userModelsBorrow.getAllBorrowBooks((err, allbooksborrow) => {
+        userModels.getAllUsers((err, users) => {
+          res.render("adminpage", {
+            borrowBooks: allbooksborrow,
+            users: users,
+          });
+        });
+      });
+    } else {
+      res.redirect("/");
+    }
   });
 };
 
@@ -291,12 +299,49 @@ const givebackbook = (req, res) => {
   });
 };
 
-// const getOverdueLoans = (req, res) => {
-//   const date = new Date();
-//   userModelsBorrow.OverdueLoans(req.session.id_user, date, (err, result) => {
-//     console.log(result)
-//   });
-// };
+const createnewbook = (req, res) => {
+  userModels.getuserdatas(req.session.id_user, (err, datas) => {
+    if (datas.admin === "yes") {
+      res.render("newbook");
+    } else {
+      res.redirect("/");
+    }
+  });
+};
+
+const createthisbook = (req, res) => {
+  userModels.getuserdatas(req.session.id_user, (err, datas) => {
+    if (datas.admin === "yes") {
+      const {
+        name,
+        author,
+        cape,
+        year,
+        description,
+        color1,
+        color2,
+        gender1,
+        gender2,
+      } = req.body;
+      userModels.createBook(
+        name,
+        author,
+        cape,
+        year,
+        description,
+        color1,
+        color2,
+        gender1,
+        gender2,
+        (err, result) => {
+          res.redirect("./createnewbook");
+        }
+      );
+    } else {
+      res.redirect("/");
+    }
+  });
+};
 
 module.exports = {
   getAllBooksOnLoad,
@@ -319,4 +364,6 @@ module.exports = {
   updateUser,
   deleteUser,
   givebackbook,
+  createnewbook,
+  createthisbook,
 };

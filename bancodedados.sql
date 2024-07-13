@@ -1,34 +1,3 @@
-Integrantes:
-
-    Guilherme Davi: Desenvolvedor Backend, responsável pelo auxílio no FrontEnd e banco de dados.
-    Anthony Sales: Desenvolvedor FrontEnd, responsável pelas telas de login e registro, além de encontrar bugs na aplicação.
-    Emanuel Carlos: Desenvolvedor, responsável por criar e popular o banco de dados.
-    José Adolfo: Desenvolvedor FrontEnd, responsável pela interface e telas do site.
-
-Perguntas:
-
-1. Com os conhecimentos adquiridos nas aulas de POO, conseguimos modularizar nosso código, o que ajuda na segurança e organização, além de ser essencial para a conexão com nosso banco de dados.
-
-2. Utilizamos o serviço Railway para criar um banco de dados em nuvem e empregamos as variáveis fornecidas por eles para estabelecer uma conexão dentro do arquivo ./bd.js, utilizando o padrão DAO e os conhecimentos de POO.
-
-3. Sim, é possível adicionar o mesmo livro mais de uma vez nos favoritos, lidos e lendo.
-
-4 .
-    Guilherme: Foi uma experiência incrível; foi como um teste de todos os conhecimentos adquiridos até agora no curso. A greve foi o meu maior desafio, pois começamos o desenvolvimento antes dela e, ao retornar às aulas, estava completamente perdido em tudo que já havíamos feito.
-
-    Adolfo: Minha experiência foi ótima, trabalhei com meus amigos em equipe, e obtive bastante conhecimento que não tinha.  Minha maior dificuldade foi a falta de tempo, porque meu dia a dia na greve foi bastante corrido, e tive que me desdobrar.
-
-    Anthony: Minha maior dificuldade no projeto foi alinhar minha ideia com a dos outros participantes visto que cada um tinha sua maneira de fazer o código ou resolver algum problema.
-
-    Emanuel: Foi um projeto de bastante aprendizado junto aos meus companheiros, desenvolvemos muito conhecimento durante o desenvolvimento da aplicação.
-    A minha maior dificuldade foi trabalhar em equipe, dividindo responsabilidades e compreender o codigo que os meus parceiros estavam a desenvolver.
-    Além do mais, nunca tive que lidar com tamanha responsabilidade de um projeto com essa dimensão, que envolvesse três matérias. E isso foi de grande aprendizado e experiência.
-
-Referências:
-Dribbble
-
----
-
 CREATE TABLE `books` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255),

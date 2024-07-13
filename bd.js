@@ -1,12 +1,13 @@
 const mysql = require('mysql2'); // LEMBRAR: $ npm install mysql
+require('dotenv').config()
 
 // Configuração da conexão com o banco de dados
 const connection = mysql.createConnection({
-    host: `roundhouse.proxy.rlwy.net`,
-    user: `root`,
-    port: `14015`,
-    password: `dfbnhGXrIghazlBtytpEybPvOrfuxagP`,
-    database: `railway`
+    host: process.env.host,
+    user: process.env.user,
+    port: process.env.port,
+    password: process.env.password,
+    database: process.env.database
 });
 // Conexão com o banco de dados
 connection.connect((err) => {
