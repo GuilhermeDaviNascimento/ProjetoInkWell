@@ -18,6 +18,7 @@ app.use(
   })
 );
 
+app.get("/search/:title", userController.searchInput);
 app.get("/reserve/:book_id", userController.reserve);
 app.get("/borrow/:book_id", userController.borrow);
 app.get("/register", (req, res) => res.render(`register`));
@@ -26,7 +27,6 @@ app.get("/login", (req, res) => res.render(`login`));
 app.post("/loginUser", userController.login);
 app.post("/createuser", userController.RegisterUser);
 app.get(`/`, userController.getAllBooksOnLoad);
-app.get("/search/:title", userController.searchInput);
 app.get("/changepassword/:password", userController.changepassword);
 app.get(`/category/:category`, userController.searchCategory);
 app.get("/logout", userController.logoutSession);

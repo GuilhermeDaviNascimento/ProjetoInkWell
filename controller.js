@@ -1,18 +1,19 @@
-const userModels = require(`./models.js`);
-const userModelsBorrow = require(`./modelsBorrow.js`);
-const userModelsReserve = require(`./modelsReserve.js`);
+const models_books = require(`./models_books.js`);
+const models_borrows = require(`./models_borrow.js`);
+const models_reservers = require(`./models_reserve.js`);
+const models_users = require(`./models_users.js`);
 const validator = require("./registerValidaditons.js");
 
 const getAllBooksOnLoad = (req, res) => {
   if (req.session.id_user) {
-    userModels.getAllBooks((err, results) => {
-      userModelsBorrow.getBorrowBooksByID(
+    models_books.getAllBooks((err, results) => {
+      models_borrows.getBorrowBooksByID(
         req.session.id_user,
         (err, resultsBorrow) => {
-          userModelsReserve.getAllBorrowBooksByID(
+          models_reservers.getAllBorrowBooksByID(
             req.session.id_user,
             (err, resultReservers) => {
-              userModels.getuserdatas(req.session.id_user, (err, datas) => {
+              models_users.getuserdatas(req.session.id_user, (err, datas) => {
                 const date = new Date();
                 const dia = date.getDate();
                 const mes = date.getMonth() + 1;
@@ -22,16 +23,15 @@ const getAllBooksOnLoad = (req, res) => {
                 let semanaquevemdia = dataSeteDiasFrente.getDate();
                 let semanaquevemmes = dataSeteDiasFrente.getMonth() + 1;
                 let semanaquevemano = dataSeteDiasFrente.getFullYear();
-
                 const formateddate = `${ano}-${mes}-${dia}`;
                 const formatdate7diasdepois = `${semanaquevemano}-${semanaquevemmes}-${semanaquevemdia}`;
-                userModelsBorrow.OverdueLoans(
+                models_borrows.OverdueLoans(
                   req.session.id_user,
                   formateddate,
                   (err, result) => {
                     if (result.length > 0) {
                       result.forEach((book) => {
-                        userModelsBorrow.insertFine(
+                        models_borrows.insertFine(
                           book.ID_Usuario,
                           book.ID_Livro,
                           book.Multa,
@@ -41,11 +41,11 @@ const getAllBooksOnLoad = (req, res) => {
                     }
                   }
                 );
-                userModelsBorrow.GetBooksClosetoExpirationDateByID(
+                models_borrows.GetBooksClosetoExpirationDateByID(
                   req.session.id_user,
                   formatdate7diasdepois,
                   (err, notificaions) => {
-                    userModelsBorrow.serachFines(
+                    models_borrows.serachFines(
                       req.session.id_user,
                       (err, fine) => {
                         res.render("index", {
@@ -76,9 +76,9 @@ const loadBookPage = (req, res) => {
   let isfullborrow = {
     full: true,
   };
-  userModels.getBookByID(book_id, (err, result) => {
-    userModelsBorrow.getBorrowDatByID(book_id, (err, book) => {
-      userModelsBorrow.getBorrowBooksByID(
+  models_books.getBookByID(book_id, (err, result) => {
+    models_borrows.getBorrowDatByID(book_id, (err, book) => {
+      models_borrows.getBorrowBooksByID(
         req.session.id_user,
         (err, borrows) => {
           if (borrows.length >= 3) {
@@ -103,11 +103,11 @@ const loadBookPage = (req, res) => {
 const searchCategory = (req, res) => {
   const category = req.params.category;
   if (category === `all`) {
-    userModels.getAllBooks((err, results) => {
+    models_books.getAllBooks((err, results) => {
       res.render("categoryBook", { lista: results });
     });
   } else {
-    userModels.getBookByCategory(category, (err, results) => {
+    models_books.getBookByCategory(category, (err, results) => {
       res.render("categoryBook", { lista: results });
     });
   }
@@ -115,13 +115,13 @@ const searchCategory = (req, res) => {
 
 const searchInput = (req, res) => {
   const input = req.params.title;
-  userModels.getBookByInput(input, (err, results) => {
+  models_books.getBookByInput(input, (err, results) => {
     res.render("categoryBook", { lista: results });
   });
 };
 
 const RegisterUser = (req, res) => {
-  userModels.getAllUsers((err, results) => {
+  models_users.getAllUsers((err, results) => {
     const { fname, lname, username, email, password, cpassword, terms } =
       req.body;
     let mensagem;
@@ -136,7 +136,7 @@ const RegisterUser = (req, res) => {
     } else if (!validator.TermsIsOn(terms)) {
       mensagem = "Aceite os termos";
     } else {
-      userModels.addUser(fname, lname, username, email, password);
+      models_users.addUser(fname, lname, username, email, password);
       mensagem = "Sucesso";
     }
     res.status(200).json({ mensagem: mensagem });
@@ -144,7 +144,7 @@ const RegisterUser = (req, res) => {
 };
 
 const login = (req, res) => {
-  userModels.getUserByEmail(req.body.email, (err, result) => {
+  models_users.getUserByEmail(req.body.email, (err, result) => {
     if (result) {
       if (
         result.email === req.body.email &&
@@ -164,9 +164,9 @@ const login = (req, res) => {
 const borrow = (req, res) => {
   const { book_id } = req.params;
   if (req.session.id_user) {
-    userModelsBorrow.isAvailable(book_id, (err, result) => {
+    models_borrows.isAvailable(book_id, (err, result) => {
       if (result === true) {
-        userModelsBorrow.borrowBook(req.session.id_user, book_id);
+        models_borrows.borrowBook(req.session.id_user, book_id);
         res.redirect("../");
       } else {
         return;
@@ -176,13 +176,14 @@ const borrow = (req, res) => {
     res.redirect("../login");
   }
 };
+
 const reserve = (req, res) => {
   const { book_id } = req.params;
   if (req.session.id_user) {
-    userModelsReserve.isAvailableReserve(book_id, (err, result) => {
-      userModelsBorrow.getDateBorrowByID(book_id, (err, book) => {
+    models_reservers.isAvailableReserve(book_id, (err, result) => {
+      models_borrows.getDateBorrowByID(book_id, (err, book) => {
         if (result === true) {
-          userModelsReserve.reserveBook(
+          models_reservers.reserveBook(
             req.session.id_user,
             book_id,
             book.Data_Devolucao
@@ -199,10 +200,10 @@ const reserve = (req, res) => {
 };
 
 const loadAdminpage = (req, res) => {
-  userModels.getuserdatas(req.session.id_user, (err, datas) => {
+  models_users.getuserdatas(req.session.id_user, (err, datas) => {
     if (datas.admin === "yes") {
-      userModelsBorrow.getAllBorrowBooks((err, allbooksborrow) => {
-        userModels.getAllUsers((err, users) => {
+      models_borrows.getAllBorrowBooks((err, allbooksborrow) => {
+        models_users.getAllUsers((err, users) => {
           res.render("adminpage", {
             borrowBooks: allbooksborrow,
             users: users,
@@ -223,22 +224,22 @@ const logoutSession = (req, res) => {
 };
 
 const GetAllFavoriteBooks = (req, res) => {
-  userModels.getallfavoriteBooksbyID(req.session.id_user, (err, result) => {
+  models_books.getallfavoriteBooksbyID(req.session.id_user, (err, result) => {
     res.render("favoriteBooks", { books: result });
   });
 };
 const GetAllReadBooks = (req, res) => {
-  userModels.getallreadBooksbyID(req.session.id_user, (err, result) => {
+  models_books.getallreadBooksbyID(req.session.id_user, (err, result) => {
     res.render("readBooks", { books: result });
   });
 };
 const GetAllReadingBooks = (req, res) => {
-  userModels.getallreadingBooksbyID(req.session.id_user, (err, result) => {
+  models_books.getallreadingBooksbyID(req.session.id_user, (err, result) => {
     res.render("readingBooks", { books: result });
   });
 };
 const favoriteThisbook = (req, res) => {
-  userModels.favoriteThisBook(
+  models_books.favoriteThisBook(
     req.session.id_user,
     req.params.bookid,
     (err, result) => {
@@ -247,7 +248,7 @@ const favoriteThisbook = (req, res) => {
   );
 };
 const readThisbook = (req, res) => {
-  userModels.readThisBook(
+  models_books.readThisBook(
     req.session.id_user,
     req.params.bookid,
     (err, result) => {
@@ -256,7 +257,7 @@ const readThisbook = (req, res) => {
   );
 };
 const readingThisbook = (req, res) => {
-  userModels.readingThisBook(
+  models_books.readingThisBook(
     req.session.id_user,
     req.params.bookid,
     (err, result) => {
@@ -266,7 +267,7 @@ const readingThisbook = (req, res) => {
 };
 
 const changepassword = (req, res) => {
-  userModels.changeUserPasswordByID(
+  models_users.changeUserPasswordByID(
     req.session.id_user,
     req.params.password,
     (err, result) => {
@@ -276,7 +277,7 @@ const changepassword = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-  userModels.UpdateUserByEmail(
+  models_users.UpdateUserByEmail(
     req.body.fname,
     req.body.lname,
     req.body.user,
@@ -288,19 +289,19 @@ const updateUser = (req, res) => {
   );
 };
 const deleteUser = (req, res) => {
-  userModels.deleteUserByEmail(req.body.email, (err, result) => {
+  models_users.deleteUserByEmail(req.body.email, (err, result) => {
     res.redirect("/adminpage");
   });
 };
 
 const givebackbook = (req, res) => {
-  userModels.GiveBookBackByID(req.body.book, (err, result) => {
+  models_books.GiveBookBackByID(req.body.book, (err, result) => {
     res.redirect("/adminpage");
   });
 };
 
 const createnewbook = (req, res) => {
-  userModels.getuserdatas(req.session.id_user, (err, datas) => {
+  models_users.getuserdatas(req.session.id_user, (err, datas) => {
     if (datas.admin === "yes") {
       res.render("newbook");
     } else {
@@ -310,7 +311,7 @@ const createnewbook = (req, res) => {
 };
 
 const createthisbook = (req, res) => {
-  userModels.getuserdatas(req.session.id_user, (err, datas) => {
+  models_users.getuserdatas(req.session.id_user, (err, datas) => {
     if (datas.admin === "yes") {
       const {
         name,
@@ -323,7 +324,7 @@ const createthisbook = (req, res) => {
         gender1,
         gender2,
       } = req.body;
-      userModels.createBook(
+      models_books.createBook(
         name,
         author,
         cape,
